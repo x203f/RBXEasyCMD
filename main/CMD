@@ -47,7 +47,6 @@ print("Loaded")
 for i,v in pairs(game.Players:GetPlayers()) do
 	if v then
 		v.Chatted:Connect(function(msg)
-		    print(v.Name.." chatted with "..msg)
 			local commtbl = GetFullChatCommand(msg)
 			if commtbl[1] then
 				local args = GetArgs(commtbl)
@@ -59,7 +58,6 @@ end
 game.Players.PlayerAdded:Connect(function(plr)
 	if plr then
 		plr.Chatted:Connect(function(msg)
-		    print(v.Name.." chatted with "..msg)
 			local commtbl = GetFullChatCommand(msg)
 			if commtbl[1] then
 				local args = GetArgs(commtbl)
@@ -103,5 +101,29 @@ CreateCommand("say",function(args)
 end)
 --[[
 loadstring(game:HttpGet("https://raw.githubusercontent.com/x203f/RBXEasyCMD/main/main/CMD",true))()
+
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Lost20/Roblox-Scripts/main/chat%20logger",true))()
+
+for i,v in pairs(game.Players:GetPlayers()) do
+    spawn(function()
+    	if v then
+	        print(v.Name)
+	        spawn(function()
+	            v.Chatted:Connect(function(msg)
+		            print(v.Name.." chatted with "..msg)
+		        end)
+	        end)
+
+	    end
+    end)
+
+end
+
+game.Players.TestAI243.Chatted:Connect(function()
+
+    print("He chatted")
+end)
+
+
 --]]
 print(module)
