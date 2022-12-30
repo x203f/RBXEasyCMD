@@ -94,6 +94,7 @@ CreateCommand("say",function(args)
 	if string.lower(args[1]) == string.lower(game.Players.LocalPlayer.Name) then
 	    print("He only me")
 		game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer(msg,"all")
+
 	elseif string.lower(args[1]) == "all" then
         print("He said ALL")
 		game:GetService('ReplicatedStorage').DefaultChatSystemChatEvents.SayMessageRequest:FireServer(msg,"all")
