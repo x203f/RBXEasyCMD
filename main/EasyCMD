@@ -1,7 +1,7 @@
 local module= {}
 local actualmodule = {
 	perfix = ';',
-	blacklist = {},
+
 }
 module.test = function(args)
 	for i,v in pairs(args) do
@@ -46,9 +46,7 @@ function GetArgs(commtbl)
 end
 print('Successfully loaded library. EasyCMD by immahack2677 and 0xc000899C.')
 for i,v in pairs(game.Players:GetPlayers()) do
-	if table.find(actualmodule.blacklist,v.Name) then
-		continue
-	else
+	if v then
 		v.Chatted:Connect(function(msg)
 			local commtbl = GetFullChatCommand(msg)
 			if commtbl[1] then
@@ -59,9 +57,7 @@ for i,v in pairs(game.Players:GetPlayers()) do
 	end
 end
 game.Players.PlayerAdded:Connect(function(plr)
-	if table.find(actualmodule.blacklist,plr.Name) then
-		return
-	else
+	if plr then
 		plr.Chatted:Connect(function(msg)
 			local commtbl = GetFullChatCommand(msg)
 			if commtbl[1] then
@@ -71,6 +67,8 @@ game.Players.PlayerAdded:Connect(function(plr)
 		end)
 	end
 end)
+--[[
+local actualmodule = loadstring(game:HttpGet("https://raw.githubusercontent.com/x203f/RBXEasyCMD/main/main/EasyCMD",true))
 actualmodule:CreateCommand("hi",function()
 	print("He said hi")
 end)
@@ -102,5 +100,5 @@ actualmodule:CreateCommand("say",function(args)
 		game:GetService('ReplicatedStorage').DefaultChatSystemChatEvents.SayMessageRequest:FireServer(msg,"all")
 	end
 end)
-
+--]]
 return actualmodule
