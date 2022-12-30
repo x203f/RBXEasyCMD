@@ -71,18 +71,16 @@ game.Players.PlayerAdded:Connect(function(plr)
 		end)
 	end
 end)
---[[
-local module = loadstring(game:HttpGet("",true))()
-module:CreateCommand("hi",function()
+actualmodule:CreateCommand("hi",function()
 	print("He said hi")
 end)
-module:CreateCommand("args",function(args)
+actualmodule:CreateCommand("args",function(args)
 	print("He gave args:")
 	for i,v in pairs(args) do
 		print('arg '..i.." "..v)
 	end
 end)
-module:CreateCommand("say",function(args)
+actualmodule:CreateCommand("say",function(args)
 	wait(math.random(75,100)/350)
 	local msg = ""
 	for i,v in pairs(args) do
@@ -104,5 +102,5 @@ module:CreateCommand("say",function(args)
 		game:GetService('ReplicatedStorage').DefaultChatSystemChatEvents.SayMessageRequest:FireServer(msg,"all")
 	end
 end)
---]]
+
 return actualmodule
