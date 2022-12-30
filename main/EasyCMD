@@ -1,0 +1,108 @@
+local module= {}
+local actualmodule = {
+	perfix = ';',
+	blacklist = {},
+}
+module.test = function(args)
+	for i,v in pairs(args) do
+		print("Arg "..i.." "..v)
+	end
+end
+function DoCommand(command,args)
+	for i,v in pairs(module) do
+		if string.lower(i) == string.lower(command) then
+			v(args)
+
+		end
+	end
+end
+function actualmodule:CreateCommand(commandName,callback)
+	module[commandName] = callback
+end
+function GetFullChatCommand(msg)
+	local splittedMsg = string.split(msg)
+
+	local FinalMsg = " "
+	if string.find(splittedMsg[1],actualmodule.perfix) ~= nil then
+		FinalMsg = string.gsub(msg,actualmodule.perfix,'')
+		splittedMsg = string.split(FinalMsg," ")
+	end
+
+	return splittedMsg
+end
+function GetArgs(commtbl)
+	local res = {}
+	for i,v in pairs(commtbl) do
+		if i == 1 then
+			continue
+		elseif v == "" then
+			continue
+
+		else
+			res[i-1] = v
+		end
+	end
+	return res
+end
+print('Successfully loaded library. EasyCMD by immahack2677 and 0xc000899C.')
+for i,v in pairs(game.Players:GetPlayers()) do
+	if table.find(actualmodule.blacklist,v.Name) then
+		continue
+	else
+		v.Chatted:Connect(function(msg)
+			local commtbl = GetFullChatCommand(msg)
+			if commtbl[1] then
+				local args = GetArgs(commtbl)
+				DoCommand(commtbl[1],GetArgs(commtbl))
+			end
+		end)
+	end
+end
+game.Players.PlayerAdded:Connect(function(plr)
+	if table.find(actualmodule.blacklist,plr.Name) then
+		return
+	else
+		plr.Chatted:Connect(function(msg)
+			local commtbl = GetFullChatCommand(msg)
+			if commtbl[1] then
+				local args = GetArgs(commtbl)
+				DoCommand(commtbl[1],GetArgs(commtbl))
+			end
+		end)
+	end
+end)
+--[[
+local module = loadstring(game:HttpGet("",true))()
+module:CreateCommand("hi",function()
+	print("He said hi")
+end)
+module:CreateCommand("args",function(args)
+	print("He gave args:")
+	for i,v in pairs(args) do
+		print('arg '..i.." "..v)
+	end
+end)
+module:CreateCommand("say",function(args)
+	wait(math.random(75,100)/350)
+	local msg = ""
+	for i,v in pairs(args) do
+		if i == 1 then
+			continue
+		elseif msg == "" then
+
+			msg = v
+
+		else
+			msg = msg.." "..v
+		end
+	end
+
+	if string.lower(args[1]) == string.lower(game.Players.LocalPlayer.Name) then
+		game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer(msg,"all")
+	elseif string.lower(args[1]) == "all" then
+
+		game:GetService('ReplicatedStorage').DefaultChatSystemChatEvents.SayMessageRequest:FireServer(msg,"all")
+	end
+end)
+--]]
+return actualmodule
