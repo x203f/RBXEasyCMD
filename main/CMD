@@ -7,7 +7,7 @@ module.test = function(args)
 		print("Arg "..i.." "..v)
 	end
 end
-local function DoCommand(command,args)
+function DoCommand(command,args)
 	for i,v in pairs(module) do
 		if string.lower(i) == string.lower(command) then
 			v(args)
@@ -15,10 +15,10 @@ local function DoCommand(command,args)
 		end
 	end
 end
-local function CreateCommand(commandName,callback)
+function CreateCommand(commandName,callback)
 	module[commandName] = callback
 end
-local function GetFullChatCommand(msg)
+function GetFullChatCommand(msg)
 	local splittedMsg = string.split(msg)
 
 	local FinalMsg = " "
@@ -29,7 +29,7 @@ local function GetFullChatCommand(msg)
 
 	return splittedMsg
 end
-local function GetArgs(commtbl)
+function GetArgs(commtbl)
 	local res = {}
 	for i,v in pairs(commtbl) do
 		if i == 1 then
@@ -43,9 +43,11 @@ local function GetArgs(commtbl)
 	end
 	return res
 end
+print("Loaded")
 for i,v in pairs(game.Players:GetPlayers()) do
 	if v then
 		v.Chatted:Connect(function(msg)
+		    print(v.Name.." chatted with "..msg)
 			local commtbl = GetFullChatCommand(msg)
 			if commtbl[1] then
 				local args = GetArgs(commtbl)
@@ -57,6 +59,7 @@ end
 game.Players.PlayerAdded:Connect(function(plr)
 	if plr then
 		plr.Chatted:Connect(function(msg)
+		    print(v.Name.." chatted with "..msg)
 			local commtbl = GetFullChatCommand(msg)
 			if commtbl[1] then
 				local args = GetArgs(commtbl)
