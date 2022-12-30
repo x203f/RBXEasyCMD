@@ -1,0 +1,107 @@
+local module= {}
+local actualmodule = {
+	perfix = ';'
+}
+module.test = function(args)
+	for i,v in pairs(args) do
+		print("Arg "..i.." "..v)
+	end
+end
+function DoCommand(command,args)
+	for i,v in pairs(module) do
+		if string.lower(i) == string.lower(command) then
+			v(args)
+
+		end
+	end
+end
+function CreateCommand(commandName,callback)
+	module[commandName] = callback
+end
+function GetFullChatCommand(msg)
+	local splittedMsg = string.split(msg)
+
+	local FinalMsg = " "
+	if string.find(splittedMsg[1],actualmodule.perfix) ~= nil then
+		FinalMsg = string.gsub(msg,actualmodule.perfix,'')
+		splittedMsg = string.split(FinalMsg," ")
+	end
+
+	return splittedMsg
+end
+function GetArgs(commtbl)
+	local res = {}
+	for i,v in pairs(commtbl) do
+		if i == 1 then
+			continue
+		elseif v == "" then
+			continue
+
+		else
+			res[i-1] = v
+		end
+	end
+	return res
+end
+print("Loaded")
+for i,v in pairs(game.Players:GetPlayers()) do
+	if v then
+		v.Chatted:Connect(function(msg)
+		    print(v.Name.." chatted with "..msg)
+			local commtbl = GetFullChatCommand(msg)
+			if commtbl[1] then
+				local args = GetArgs(commtbl)
+				DoCommand(commtbl[1],GetArgs(commtbl))
+			end
+		end)
+	end
+end
+game.Players.PlayerAdded:Connect(function(plr)
+	if plr then
+		plr.Chatted:Connect(function(msg)
+		    print(v.Name.." chatted with "..msg)
+			local commtbl = GetFullChatCommand(msg)
+			if commtbl[1] then
+				local args = GetArgs(commtbl)
+				DoCommand(commtbl[1],GetArgs(commtbl))
+			end
+		end)
+	end
+end)
+
+CreateCommand("hi",function()
+	print("He said hi")
+end)
+CreateCommand("args",function(args)
+	print("He gave args:")
+	for i,v in pairs(args) do
+		print('arg '..i.." "..v)
+	end
+end)
+CreateCommand("say",function(args)
+	wait(math.random(75,100)/350)
+	local msg = ""
+	for i,v in pairs(args) do
+		if i == 1 then
+			continue
+		elseif msg == "" then
+
+			msg = v
+
+		else
+			msg = msg.." "..v
+		end
+	end
+    print(msg)
+	if string.lower(args[1]) == string.lower(game.Players.LocalPlayer.Name) then
+	    print("He only me")
+		game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer(msg,"all")
+	elseif string.lower(args[1]) == "all" then
+        print("He said ALL")
+		game:GetService('ReplicatedStorage').DefaultChatSystemChatEvents.SayMessageRequest:FireServer(msg,"all")
+	end
+end)
+--[[
+loadstring(game:HttpGet("https://raw.githubusercontent.com/x203f/RBXEasyCMD/main/main/CMD",true))()
+--]]
+print(module)
