@@ -1,14 +1,13 @@
-           local module= {}
+local module= {}
 local actualmodule = {
-	perfix = ';',
-
+	perfix = ';'
 }
 module.test = function(args)
 	for i,v in pairs(args) do
 		print("Arg "..i.." "..v)
 	end
 end
-function DoCommand(command,args)
+local function DoCommand(command,args)
 	for i,v in pairs(module) do
 		if string.lower(i) == string.lower(command) then
 			v(args)
@@ -16,10 +15,10 @@ function DoCommand(command,args)
 		end
 	end
 end
-function actualmodule:CreateCommand(commandName,callback)
+local function CreateCommand(commandName,callback)
 	module[commandName] = callback
 end
-function GetFullChatCommand(msg)
+local function GetFullChatCommand(msg)
 	local splittedMsg = string.split(msg)
 
 	local FinalMsg = " "
@@ -30,7 +29,7 @@ function GetFullChatCommand(msg)
 
 	return splittedMsg
 end
-function GetArgs(commtbl)
+local function GetArgs(commtbl)
 	local res = {}
 	for i,v in pairs(commtbl) do
 		if i == 1 then
@@ -44,7 +43,6 @@ function GetArgs(commtbl)
 	end
 	return res
 end
-print('Successfully loaded library. EasyCMD by immahack2677 and 0xc000899C.')
 for i,v in pairs(game.Players:GetPlayers()) do
 	if v then
 		v.Chatted:Connect(function(msg)
@@ -67,18 +65,17 @@ game.Players.PlayerAdded:Connect(function(plr)
 		end)
 	end
 end)
---[[
-local actualmodule = loadstring(game:HttpGet("https://raw.githubusercontent.com/x203f/RBXEasyCMD/main/main/EasyCMD",true))()
-actualmodule:CreateCommand("hi",function()
+
+CreateCommand("hi",function()
 	print("He said hi")
 end)
-actualmodule:CreateCommand("args",function(args)
+CreateCommand("args",function(args)
 	print("He gave args:")
 	for i,v in pairs(args) do
 		print('arg '..i.." "..v)
 	end
 end)
-actualmodule:CreateCommand("say",function(args)
+CreateCommand("say",function(args)
 	wait(math.random(75,100)/350)
 	local msg = ""
 	for i,v in pairs(args) do
@@ -100,5 +97,7 @@ actualmodule:CreateCommand("say",function(args)
 		game:GetService('ReplicatedStorage').DefaultChatSystemChatEvents.SayMessageRequest:FireServer(msg,"all")
 	end
 end)
+--[[
+loadstring(game:HttpGet("",true))()
 --]]
-return actualmodule
+print(module)
