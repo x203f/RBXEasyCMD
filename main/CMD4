@@ -380,13 +380,6 @@ CreateCommand("unfollow",function(args)
 	follow = false
 
 end)
-CreateCommand("reload",function(args)
-    spawn(function()
-        loadstring(game:HttpGet("https://raw.githubusercontent.com/x203f/RBXEasyCMD/main/main/CMD4",true))()
-    end)
-    print("Reloaded")
-    script:Destroy()
-end)
 print(module)
 --[[
 loadstring(game:HttpGet("https://raw.githubusercontent.com/x203f/RBXEasyCMD/main/main/CMD4",true))()
