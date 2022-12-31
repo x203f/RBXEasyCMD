@@ -204,12 +204,12 @@ CreateCommand("jumpboost",function(args)
 	wait(math.random(75,100)/350)
 	if string.lower(args[1]) == string.lower(game.Players.LocalPlayer.Name) then
 		if tonumber(args[2]) then
-			game.Players.LocalPlayer.Character:FindFirstChildOfClass("Humanoid").JumpPower = tonumber(args[2])
+			game.Players.LocalPlayer.Character:FindFirstChildOfClass("Humanoid").JumpHeight = tonumber(args[2])
 		end
 
 	elseif string.lower(args[1]) == "all" then
 		if tonumber(args[2]) then
-			game.Players.LocalPlayer.Character:FindFirstChildOfClass("Humanoid").JumpPower = tonumber(args[2])
+			game.Players.LocalPlayer.Character:FindFirstChildOfClass("Humanoid").JumpHeight = tonumber(args[2])
 		end
 	end
 end)
@@ -225,10 +225,10 @@ end)
 CreateCommand("unjumpboost",function(args)
 	wait(math.random(75,100)/350)
 	if string.lower(args[1]) == string.lower(game.Players.LocalPlayer.Name) then
-		game.Players.LocalPlayer.Character:FindFirstChildOfClass("Humanoid").JumpPower = 50
+		game.Players.LocalPlayer.Character:FindFirstChildOfClass("Humanoid").JumpHeight = 11
 
 	elseif string.lower(args[1]) == "all" then
-		game.Players.LocalPlayer.Character:FindFirstChildOfClass("Humanoid").JumpPower = 50
+		game.Players.LocalPlayer.Character:FindFirstChildOfClass("Humanoid").JumpHeight = 11
 	end
 end)
 CreateCommand("sayrandom",function(args)
@@ -334,14 +334,16 @@ CreateCommand("followpf",function(args)
 	end
 	if tpTo then
 		while wait() do
+			local module = loadstring(game:HttpGet("https://raw.githubusercontent.com/x203f/RBXPathFinder/main/main/PathFinder",true))()
 			if follow == true then
-				local module = loadstring(game:HttpGet("https://raw.githubusercontent.com/x203f/RBXPathFinder/main/main/PathFinder",true))()
+
 				module.PlaceWayPoints = false
 				module.WaitPerWaypoint = 0.035
 				print(module.Humanoid)
 				module:Walk(tpTo.RootPart.Position)
 				wait()
 			else
+			    module:ClearWayPoints()
 				break
 			end
 		end
