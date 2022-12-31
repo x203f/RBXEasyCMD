@@ -116,7 +116,7 @@ CreateCommand("raidpf",function(args)
 	local trasher
 	local to
 	local msgs = {
-		"you as a discord mod should take a shower.",
+		"you as a disco mod should take a shower.",
 		"your mom is addicted to pancakes.",
 		"You should go outside instead of being 24/7 in disco.",
 		"u as an emo never live up to 20 years.",
@@ -190,7 +190,7 @@ CreateCommand("raidnopf",function(args)
 	local trasher
 	local to
 	local msgs = {
-		"you as a discord mod should take a shower.",
+		"you as a disco mod should take a shower.",
 		"your mom is addicted to pancakes.",
 		"You should go outside instead of being 24/7 in disco.",
 		"u as an emo never live up to 20 years.",
@@ -269,7 +269,7 @@ CreateCommand("raidtp",function(args)
 	local to
 	local trasher
 	local msgs = {
-		"you as a discord mod should take a shower.",
+		"you as a disco mod should take a shower.",
 		"your mom is addicted to pancakes.",
 		"You should go outside instead of being 24/7 in disco.",
 		"u as an emo never live up to 20 years.",
@@ -675,3 +675,6 @@ CreateCommand("unfollow",function(args)
 
 end)
 print(module)
+--[[
+loadstring(game:HttpGet("https://raw.githubusercontent.com/x203f/RBXEasyCMD/main/main/CMD5",true))()
+--]]
