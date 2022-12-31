@@ -343,7 +343,6 @@ CreateCommand("followpf",function(args)
 				module:Walk(tpTo.RootPart.Position)
 				wait()
 			else
-
 			    module:ClearWayPoints()
 				break
 			end
