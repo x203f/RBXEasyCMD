@@ -171,28 +171,31 @@ CreateCommand("tp",function(args)
 
 end)
 CreateCommand("followpf",function(args)
-	local tpTo
 	local tpFrom
-	follow = true
+	local tpTo
 	if string.lower(args[1]) == string.lower(game.Players.LocalPlayer.Name) then
 		tpFrom = game.Players.LocalPlayer.Character:FindFirstChildOfClass("Humanoid")
-	elseif string.lower(args[1]) == "all" then
-		tpFrom = game.Players.LocalPlayer.Character:FindFirstChildOfClass("Humanoid")
-	end
-	if string.lower(args[1]) == string.lower(game.Players.LocalPlayer.Name) then
-		tpTo = game.Players.LocalPlayer.Character:FindFirstChildOfClass("Humanoid")
 	else
 		if CheckPlayer(args[1]) then
-			tpTo = CheckPlayer(args[1]).Character:FindFirstChildOfClass("Humanoid")
+			tpFrom = CheckPlayer(args[1]).Character:FindFirstChildOfClass("Humanoid")
 		end
 	end
-	if tpTo and tpFrom then
+	if string.lower(args[2]) == string.lower(game.Players.LocalPlayer.Name) then
+		tpTo = game.Players.LocalPlayer.Character:FindFirstChildOfClass("Humanoid")
+	else
+		if CheckPlayer(args[2]) then
+			tpTo = CheckPlayer(args[2]).Character:FindFirstChildOfClass("Humanoid")
+		end
+	end
+	print(tpFrom,tpTo)
+	if tpFrom and tpTo then
 		while wait() do
 			if follow == true then
 				local module = loadstring(game:HttpGet("https://raw.githubusercontent.com/x203f/RBXPathFinder/main/main/PathFinder",true))()
 				module.PlaceWayPoints = false
 				module.WaitPerWaypoint = 0.035
 				module.Humanoid = tpFrom
+				print(module.Humanoid)
 				module:Walk(tpTo.RootPart.Position)
 				wait()
 			else
@@ -201,7 +204,6 @@ CreateCommand("followpf",function(args)
 
 		end
 	end
-
 end)
 CreateCommand("follownopf",function(args)
 	local tpTo
