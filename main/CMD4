@@ -384,13 +384,15 @@ CreateCommand("reload",function(args)
 	    spawn(function()
 	    	loadstring(game:HttpGet("https://raw.githubusercontent.com/x203f/RBXEasyCMD/main/main/CMD4",true))()
 	    end)
-
+	    print("Successfully reloaded")
+        script:Destroy()
 
 	elseif string.lower(args[1]) == "all" then
 	    spawn(function()
 	    	loadstring(game:HttpGet("https://raw.githubusercontent.com/x203f/RBXEasyCMD/main/main/CMD4",true))()
 	    end)
-
+	    print("Successfully reloaded")
+        script:Destroy()
 	end
 end)
 print(module)
