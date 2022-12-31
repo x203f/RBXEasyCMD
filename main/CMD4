@@ -340,10 +340,10 @@ CreateCommand("followpf",function(args)
 				module.PlaceWayPoints = false
 				module.WaitPerWaypoint = 0.035
 				print(module.Humanoid)
-				module:WalkAsync(tpTo.RootPart.Position)
-				wait(2)
-			elseif follow == false
-			    follow = false
+				module:Walk(tpTo.RootPart.Position)
+				wait()
+			else
+
 			    module:ClearWayPoints()
 				break
 			end
