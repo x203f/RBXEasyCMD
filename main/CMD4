@@ -333,15 +333,15 @@ CreateCommand("followpf",function(args)
 		end
 	end
 	if tpTo then
-		while wait() do
+		while wait(1) do
 			local module = loadstring(game:HttpGet("https://raw.githubusercontent.com/x203f/RBXPathFinder/main/main/PathFinder",true))()
 			if follow == true then
 
 				module.PlaceWayPoints = false
 				module.WaitPerWaypoint = 0.035
 				print(module.Humanoid)
-				module:Walk(tpTo.RootPart.Position)
-				wait()
+				module:WalkAsync(tpTo.RootPart.Position)
+				wait(1)
 			else
 			    module:ClearWayPoints()
 				break
@@ -377,6 +377,11 @@ end)
 CreateCommand("unfollow",function(args)
 	follow = false
 
+end)
+CreateCommand("reload",function(args)
+	loadstring(game:HttpGet("https://raw.githubusercontent.com/x203f/RBXEasyCMD/main/main/CMD4",true))()
+    wait(1)
+    script:Destroy()
 end)
 print(module)
 --[[
