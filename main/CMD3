@@ -52,6 +52,7 @@ local function CheckPlayer(Name)
 	end
 	return false
 end
+print("LOADED:)")
 for i,v in pairs(game.Players:GetPlayers()) do
 	if v then
 		v.Chatted:Connect(function(msg)
