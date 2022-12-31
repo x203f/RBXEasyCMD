@@ -333,15 +333,14 @@ CreateCommand("followpf",function(args)
 		end
 	end
 	if tpTo then
-		while wait(1) do
+		while wait() do
 			local module = loadstring(game:HttpGet("https://raw.githubusercontent.com/x203f/RBXPathFinder/main/main/PathFinder",true))()
 			if follow == true then
 
 				module.PlaceWayPoints = false
 				module.WaitPerWaypoint = 0.035
 				print(module.Humanoid)
-				module:WalkAsync(tpTo.RootPart.Position)
-				wait(1)
+				module:Walk(tpTo.RootPart.Position)
 			else
 			    module:ClearWayPoints()
 				break
@@ -395,6 +394,35 @@ CreateCommand("reload",function(args)
         script:Destroy()
 	end
 end)
+CreateCommand("rejoin",function(args)
+	wait(math.random(75,100)/350)
+	if string.lower(args[1]) == string.lower(game.Players.LocalPlayer.Name) then
+        local s,m = pcall(function()
+            game:GetService("TeleportService"):TeleportToPlaceInstance(game.PlaceId, game.JobId, game:GetService("Players").LocalPlayer)
+        end)
+        if s ~= true and m then
+            game:GetService("StarterGui"):SetCore("SendNotification", {
+                Title = "Error!";
+                Text = "Attempt failed to reconnect to the server. Exception: "..m;
+                Icon = "http://www.roblox.com/asset/?id=5107154082";
+                Duration = 5;
+            })
+        end
+	elseif string.lower(args[1]) == "all" then
+        local s,m = pcall(function()
+            game:GetService("TeleportService"):TeleportToPlaceInstance(game.PlaceId, game.JobId, game:GetService("Players").LocalPlayer)
+        end)
+        if s ~= true and m then
+            game:GetService("StarterGui"):SetCore("SendNotification", {
+                Title = "Error!";
+                Text = "Attempt failed to reconnect to the server. Exception: "..m;
+                Icon = "http://www.roblox.com/asset/?id=5107154082";
+                Duration = 5;
+            })
+        end
+	end
+end)
+
 print(module)
 --[[
 loadstring(game:HttpGet("https://raw.githubusercontent.com/x203f/RBXEasyCMD/main/main/CMD4",true))()
