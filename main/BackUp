@@ -116,7 +116,7 @@ CreateCommand("raidpf",function(args)
 	local trasher
 	local to
 	local msgs = {
-		"you as a discord mod should take a shower.",
+		"you as a disco mod should take a shower.",
 		"your mom is addicted to pancakes.",
 		"You should go outside instead of being 24/7 in disco.",
 		"u as an emo never live up to 20 years.",
@@ -190,7 +190,7 @@ CreateCommand("raidnopf",function(args)
 	local trasher
 	local to
 	local msgs = {
-		"you as a discord mod should take a shower.",
+		"you as a disco mod should take a shower.",
 		"your mom is addicted to pancakes.",
 		"You should go outside instead of being 24/7 in disco.",
 		"u as an emo never live up to 20 years.",
@@ -269,7 +269,7 @@ CreateCommand("raidtp",function(args)
 	local to
 	local trasher
 	local msgs = {
-		"you as a discщ mod should take a shower.",
+		"you as a disco mod should take a shower.",
 		"your mom is addicted to pancakes.",
 		"You should go outside instead of being 24/7 in disco.",
 		"u as an emo never live up to 20 years.",
@@ -423,23 +423,6 @@ CreateCommand("unblacklist",function(args)
 		print('the player was not blacklisted')
 	end
 end)
-CreateCommand("botcmds",function(args)
-	local msg = {
-		[1] = 'page 1/10 : ;botcmds page:number - shows the commands on page, ;showblacklist <No args> : shows blacklisted players',
-		[2] = "page 2/10 : ;follow<sign: pf, nopf> <follow Who:username> - follows a player - example: ;followpf bobbygamer124, the opposite of follow is ;unfollow.",
-		[3] = "page 3/10 : ;goto<sign: pf, nopf> <goto who: username> - going to a player, ;looptp <botname/all> tp looping until the player says ;unlooptp.",
-		[4] = "page 4/10 : ;kill <kill who: bot username> - kills a bot.",
-		[5] = "page 5/10 : ;raid<sign: pf, nopf, tp> <raid who: username> - raiding a player, WARNING, DO NOT ABUSE IT OR YOU WILL GET BLACKLISTED.",
-		[6] = "page 6/10 : ;say <who will say: bot username> <message: string (sentences/words/numbers) - forces a bot to say something.",
-		[7] = "page 7/10 : ;sayrandom <who: bot username/all> <word length: number> <word amount: number> - forces a bot say random things.",
-		[8] = "page 8/10 : ;freeze <who: bot username> - freezes a bot.",
-		[9] = "page 9/10 : ;walkspeed <who: bot username> <speed: number> - speeding up the bot",
-		[10] = "page 10/10 : ;tp <from: bot username> <to: username> - teleports a bot to a target.",
-	}
-	if tonumber(args[1]) then
-		game:GetService('ReplicatedStorage').DefaultChatSystemChatEvents.SayMessageRequest:FireServer(msg[tonumber(args[1])],"all")
-	end
-end)
 CreateCommand("args",function(args)
 	print("He gave args:")
 	for i,v in pairs(args) do
@@ -466,18 +449,6 @@ CreateCommand("say",function(args)
 	elseif string.lower(args[1]) == "all" then
 
 		game:GetService('ReplicatedStorage').DefaultChatSystemChatEvents.SayMessageRequest:FireServer(msg,"all")
-	end
-end)
-CreateCommand("antiafk",function(args)
-	wait(math.random(75,100)/350)
-	print("Loaded anti AFK")
-	if string.lower(args[1]) == string.lower(game.Players.LocalPlayer.Name) then
-		local AntiAFK = loadstring(game:HttpGet("https://raw.githubusercontent.com/x203f/RBXAntiAFK/main/main/AntiAFK",true))()
-		AntiAFK:bypass()
-	elseif string.lower(args[1]) == "all" then
-
-		local AntiAFK = loadstring(game:HttpGet("https://raw.githubusercontent.com/x203f/RBXAntiAFK/main/main/AntiAFK",true))()
-		AntiAFK:bypass()
 	end
 end)
 CreateCommand("kill",function(args)
@@ -704,3 +675,6 @@ CreateCommand("unfollow",function(args)
 
 end)
 print(module)
+--[[
+loadstring(game:HttpGet("https://raw.githubusercontent.com/x203f/RBXEasyCMD/main/main/CMD5",true))()
+--]]
