@@ -99,6 +99,35 @@ end)
 CreateCommand("hi",function()
 	print("He said hi")
 end)
+CreateCommand("rejoin",function(args)
+	if string.lower(args[1]) == string.lower(game.Players.LocalPlayer.Name) then
+		local s,m = pcall(function()
+			game:GetService("TeleportService"):TeleportToPlaceInstance(game.PlaceId, game.JobId, game:GetService("Players").LocalPlayer)
+		end)
+		if s ~= true and m then
+			game:GetService("StarterGui"):SetCore("SendNotification", {
+				Title = "Error!";
+				Text = "Attempt failed to reconnect to the server. Exception: "..m;
+				Icon = "http://www.roblox.com/asset/?id=5107154082";
+				Duration = 5;
+			})
+		end
+	elseif string.lower(args[1]) == "all" then
+
+		local s,m = pcall(function()
+			game:GetService("TeleportService"):TeleportToPlaceInstance(game.PlaceId, game.JobId, game:GetService("Players").LocalPlayer)
+		end)
+		if s ~= true and m then
+			game:GetService("StarterGui"):SetCore("SendNotification", {
+				Title = "Error!";
+				Text = "Attempt failed to reconnect to the server. Exception: "..m;
+				Icon = "http://www.roblox.com/asset/?id=5107154082";
+				Duration = 5;
+			})
+		end
+	end
+end)
+
 CreateCommand("blacklist",function(args)
 	if string.lower(args[1]) == "testai938" then
 		print("You cant blacklist this player")
@@ -704,6 +733,3 @@ CreateCommand("unfollow",function(args)
 
 end)
 print(module)
---[[
-loadstring(game:HttpGet("https://raw.githubusercontent.com/x203f/RBXEasyCMD/main/main/CMD5",true))()
---]]
