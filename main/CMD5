@@ -1,6 +1,7 @@
 local module= {}
 local follow = false
 local raid = false
+local rickroll = false
 local looptp = false
 local actualmodule = {
 	perfix = ';'	,
@@ -99,37 +100,8 @@ end)
 CreateCommand("hi",function()
 	print("He said hi")
 end)
-CreateCommand("rejoin",function(args)
-	if string.lower(args[1]) == string.lower(game.Players.LocalPlayer.Name) then
-		local s,m = pcall(function()
-			game:GetService("TeleportService"):TeleportToPlaceInstance(game.PlaceId, game.JobId, game:GetService("Players").LocalPlayer)
-		end)
-		if s ~= true and m then
-			game:GetService("StarterGui"):SetCore("SendNotification", {
-				Title = "Error!";
-				Text = "Attempt failed to reconnect to the server. Exception: "..m;
-				Icon = "http://www.roblox.com/asset/?id=5107154082";
-				Duration = 5;
-			})
-		end
-	elseif string.lower(args[1]) == "all" then
-
-		local s,m = pcall(function()
-			game:GetService("TeleportService"):TeleportToPlaceInstance(game.PlaceId, game.JobId, game:GetService("Players").LocalPlayer)
-		end)
-		if s ~= true and m then
-			game:GetService("StarterGui"):SetCore("SendNotification", {
-				Title = "Error!";
-				Text = "Attempt failed to reconnect to the server. Exception: "..m;
-				Icon = "http://www.roblox.com/asset/?id=5107154082";
-				Duration = 5;
-			})
-		end
-	end
-end)
-
 CreateCommand("blacklist",function(args)
-	if string.lower(args[1]) == "testai938" then
+	if string.lower(args[1]) == "testai243" then
 		print("You cant blacklist this player")
 		return
 	else
@@ -159,7 +131,7 @@ CreateCommand("raidpf",function(args)
 		"YОU АRЕ А СНЕАР ВlТСН",
 		"Roses are red, violets are blue, Its time for the disco mods to take a dam shower.",
 		"You are fatter than nickocado avocado.",
-		'You should change your eating habits because you are fat af',
+		'You should change your eating habits because you are fat',
 
 	}
 
@@ -383,6 +355,93 @@ CreateCommand("raidtp",function(args)
 		end
 	end)
 end)
+CreateCommand("rickroll",function(args)
+	wait(math.random(75,100)/350)
+	local to
+	local msgs = {
+		"Never gonna give you up",
+		"Never gonna let you down",
+		"Never gonna run around and desert you",
+		"Never gonna make you cry",
+		"Never gonna say goodbye",
+		"Never gonna tell a lie and hurt you",
+	}
+	local from
+	rickroll = true
+	if string.lower(args[1]) == string.lower(game.Players.LocalPlayer.Name) then
+		from = game.Players.LocalPlayer.Character:FindFirstChildOfClass("Humanoid")
+	elseif string.lower(args[1]) == "all" then
+		from = game.Players.LocalPlayer.Character:FindFirstChildOfClass("Humanoid")
+	end
+	if string.lower(args[2]) == string.lower(game.Players.LocalPlayer.Name) then
+		to = game.Players.LocalPlayer.Character:FindFirstChildOfClass("Humanoid")
+	else
+		if CheckPlayer(args[2]) then
+			to = CheckPlayer(args[2]).Character:FindFirstChildOfClass("Humanoid")
+		end
+	end
+	local plr = game.Players:GetPlayerFromCharacter(to.Parent)
+	spawn(function()
+		if rickroll == true then
+			if string.lower(args[1]) == string.lower(game.Players.LocalPlayer.Name) then
+				for i,v in pairs(msgs) do
+					game:GetService('ReplicatedStorage').DefaultChatSystemChatEvents.SayMessageRequest:FireServer(v,"all")
+					wait(2)
+				end
+				rickroll = false
+			elseif string.lower(args[1]) == "all" then
+				for i,v in pairs(msgs) do
+					game:GetService('ReplicatedStorage').DefaultChatSystemChatEvents.SayMessageRequest:FireServer(v,"all")
+					wait(2)
+				end
+				rickroll = false
+			end
+			rickroll = false
+		end
+	end)
+	if to and from then
+		while wait() do
+			if rickroll == true then
+				pcall(function()
+					if from == game.Players.LocalPlayer.Character:FindFirstChildOfClass("Humanoid") then
+
+						spawn(function()
+							while wait(2) do
+								pcall(function()
+									to.Died:Connect(function()
+										print('Died')
+										plr.CharacterAdded:Connect(function(model)
+											to = model:WaitForChild("Humanoid")
+											from.RootPart.CFrame = to.RootPart.CFrame
+										end)
+									end)
+								end)
+
+							end
+
+						end)
+						pcall(function()
+							from.RootPart.CFrame = to.RootPart.CFrame
+						end)
+
+
+					end
+				end)
+
+			else
+				break
+			end
+		end
+	end
+
+end)
+CreateCommand("setprefix",function(args)
+	if #args[1] == 1 then
+		actualmodule.perfix = args[1]
+	else
+		warn("The prefix should be 1 character long. not "..tostring(#args[1]))
+	end
+end)
 CreateCommand("looptp",function(args)
 	wait(math.random(75,100)/350)
 	local to
@@ -496,6 +555,40 @@ CreateCommand("say",function(args)
 
 		game:GetService('ReplicatedStorage').DefaultChatSystemChatEvents.SayMessageRequest:FireServer(msg,"all")
 	end
+end)
+CreateCommand("dance",function(args)
+
+	if tonumber(args[2]) ~= 1 then
+		if string.lower(args[1]) == string.lower(game.Players.LocalPlayer.Name) then
+			game:GetService("Players"):Chat("/e dance"..tostring(args[2]))
+		elseif string.lower(args[1]) == "all" then
+			game:GetService("Players"):Chat("/e dance"..tostring(args[2]))
+		end
+	elseif tonumber(args[2]) == 1 then
+		if string.lower(args[1]) == string.lower(game.Players.LocalPlayer.Name) then
+			game:GetService("Players"):Chat("/e dance")
+		elseif string.lower(args[1]) == "all" then
+			game:GetService("Players"):Chat("/e dance")
+		end
+	end
+
+end)
+CreateCommand("bang",function(args)
+
+	if tonumber(args[2]) ~= 1 then
+		if string.lower(args[1]) == string.lower(game.Players.LocalPlayer.Name) then
+			game:GetService("Players"):Chat("/e dance"..tostring(args[2]))
+		elseif string.lower(args[1]) == "all" then
+			game:GetService("Players"):Chat("/e dance"..tostring(args[2]))
+		end
+	elseif tonumber(args[2]) == 1 then
+		if string.lower(args[1]) == string.lower(game.Players.LocalPlayer.Name) then
+			game:GetService("Players"):Chat("/e dance")
+		elseif string.lower(args[1]) == "all" then
+			game:GetService("Players"):Chat("/e dance")
+		end
+	end
+
 end)
 CreateCommand("antiafk",function(args)
 	wait(math.random(75,100)/350)
@@ -728,6 +821,7 @@ CreateCommand("follownopf",function(args)
 	end
 
 end)
+
 CreateCommand("unfollow",function(args)
 	follow = false
 
