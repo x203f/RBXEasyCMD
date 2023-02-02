@@ -12,7 +12,6 @@ module.test = function(args)
 end
 local function DoCommand(command,args)
 	for i,v in pairs(module) do
-	    print(i,v)
 		if string.lower(i) == string.lower(command) then
 			v(args)
 
@@ -425,7 +424,7 @@ CreateCommand("unfollow",function(args)
 	follow = false
 
 end)
-CreateCommand("loadplugin",function(args)
+CreateCommand("useplugin",function(args)
     print('loadplugin')
 	local loadto
 	if string.lower(args[1]) == string.lower(game.Players.LocalPlayer) then
