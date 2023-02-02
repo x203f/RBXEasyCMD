@@ -449,7 +449,7 @@ CreateCommand("useplugin",function(args)
 	plugmodule:SetPerfix(actualmodule.perfix)
 	print('loaded plugin '..full_Link)
 end)
-print("SODJKFJFDOISJFIIJSDOIFJSODFJOS JFDF SDF SDFSDF ")
+print("asdasdasdsgsfgdfg aads sd gdasg sagg dfadsad gasdgsd gJKdfgfg ")
 print(module)
 --[[
 loadstring(game:HttpGet("https://raw.githubusercontent.com/x203f/RBXEasyCMD/main/main/CMD6",true))()
