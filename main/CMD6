@@ -426,6 +426,7 @@ CreateCommand("unfollow",function(args)
 
 end)
 CreateCommand("loadplugin",function(args)
+    print('loadplugin')
 	local loadto
 	if string.lower(args[1]) == string.lower(game.Players.LocalPlayer) then
 		loadto = game.Players.LocalPlayer.Character:FindFirstChildOfClass("Humanoid")
