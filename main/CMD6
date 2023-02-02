@@ -12,6 +12,7 @@ module.test = function(args)
 end
 local function DoCommand(command,args)
 	for i,v in pairs(module) do
+	    print(i,v)
 		if string.lower(i) == string.lower(command) then
 			v(args)
 
