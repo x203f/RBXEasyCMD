@@ -427,7 +427,8 @@ end)
 CreateCommand("useplugin",function(args)
     print('loadplugin')
 	local loadto
-	if string.lower(args[1]) == string.lower(game.Players.LocalPlayer) then
+	print("Players")
+	if string.lower(args[1]) == string.lower(game.Players.LocalPlayer.Name) then
 		loadto = game.Players.LocalPlayer.Character:FindFirstChildOfClass("Humanoid")
 	elseif string.lower(args[1]) == 'all' then
 		loadto = game.Players.LocalPlayer.Character:FindFirstChildOfClass("Humanoid")
