@@ -433,8 +433,6 @@ CreateCommand("useplugin",function(args)
 	elseif string.lower(args[1]) == 'all' then
 		loadto = game.Players.LocalPlayer.Character:FindFirstChildOfClass("Humanoid")
 	end
-	local newArgs = args
-	print(newArgs)
 	table.remove(newArgs,1)
 	print("Removed")
 	local full_Link = ""
@@ -442,7 +440,7 @@ CreateCommand("useplugin",function(args)
 	if a then
 		args[a] = 'raw.githubusercontent.com'
 	end
-	full_Link = 'https://'
+	full_Link = 'https:/'
 	for i,v in pairs(args) do
 		full_Link = full_Link.."/"..v
 	end
@@ -455,4 +453,5 @@ print("SODJKFJFDOISJFIIJSDOIFJSODFJOS JFDF SDF SDFSDF ")
 print(module)
 --[[
 loadstring(game:HttpGet("https://raw.githubusercontent.com/x203f/RBXEasyCMD/main/main/CMD6",true))()
+;useplugin all github.com x203f RBXEasyCMD main TestPlugin
 --]]
