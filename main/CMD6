@@ -432,7 +432,10 @@ CreateCommand("useplugin",function(args)
 	elseif string.lower(args[1]) == 'all' then
 		loadto = game.Players.LocalPlayer.Character:FindFirstChildOfClass("Humanoid")
 	end
-	table.remove(args,1)
+	local newArgs = args
+	print(newArgs)
+	table.remove(newArgs,1)
+	print("Removed")
 	local full_Link = ""
 	local a = table.find(args,"github.com")
 	if a then
