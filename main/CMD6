@@ -1,0 +1,451 @@
+local module= {}
+local follow = false
+local raid = false
+local actualmodule = {
+	perfix = ';'	,
+	blacklist = {}
+}
+module.test = function(args)
+	for i,v in pairs(args) do
+		print("Arg "..i.." "..v)
+	end
+end
+local function DoCommand(command,args)
+	for i,v in pairs(module) do
+		if string.lower(i) == string.lower(command) then
+			v(args)
+
+		end
+	end
+end
+local function CreateCommand(commandName,callback)
+	module[commandName] = callback
+end
+local function GetFullChatCommand(msg)
+	local splittedMsg = string.split(msg)
+
+	local FinalMsg = " "
+	if string.find(splittedMsg[1],actualmodule.perfix) ~= nil then
+		FinalMsg = string.gsub(msg,actualmodule.perfix,'')
+		splittedMsg = string.split(FinalMsg," ")
+	end
+
+	return splittedMsg
+end
+local function GetArgs(commtbl)
+	local res = {}
+	for i,v in pairs(commtbl) do
+		if i == 1 then
+			continue
+		elseif v == "" then
+			continue
+
+		else
+			res[i-1] = v
+		end
+	end
+	return res
+end
+local function removeblacklist(name)
+
+	for i,v in pairs(actualmodule.blacklist) do
+		if v == name then
+			table.remove(actualmodule.blacklist,i)
+		end
+	end
+end
+local function CheckPlayer(Name)
+	for i,v in pairs(game.Players:GetPlayers()) do
+		if string.lower(v.Name) == string.lower(Name) then
+			return v
+		end
+	end
+	return false
+end
+for i,v in pairs(game.Players:GetPlayers()) do
+	if not table.find(actualmodule.blacklist,string.lower(v.Name)) then
+		v.Chatted:Connect(function(msg)
+			if table.find(actualmodule.blacklist,string.lower(v.Name)) then
+				return
+			else
+				local commtbl = GetFullChatCommand(msg)
+				if commtbl[1] then
+					local args = GetArgs(commtbl)
+					DoCommand(commtbl[1],GetArgs(commtbl))
+				end
+			end
+
+		end)
+	end
+end
+game.Players.PlayerAdded:Connect(function(plr)
+	if not table.find(actualmodule.blacklist,string.lower(plr.Name)) then
+		plr.Chatted:Connect(function(msg)
+			if table.find(actualmodule.blacklist,string.lower(plr.Name)) then
+				print('you are blacklisted')
+				return
+			else
+				local commtbl = GetFullChatCommand(msg)
+				if commtbl[1] then
+					local args = GetArgs(commtbl)
+					DoCommand(commtbl[1],GetArgs(commtbl))
+				end
+			end
+		end)
+	end
+end)
+
+CreateCommand("hi",function()
+	print("He said hi")
+end)
+CreateCommand("blacklist",function(args)
+	if string.lower(args[1]) == "testai938" then
+		print("You cant blacklist this player")
+		return
+	else
+		if table.find(actualmodule.blacklist,string.lower(args[1])) then
+			print("Player "..string.lower(args[1]).." was already blacklisted.")
+		else
+			table.insert(actualmodule.blacklist,string.lower(args[1]))
+		end
+	end
+
+end)
+CreateCommand("raidgotopf",function(args)
+	local trasher
+	local to
+	local msgs = {
+		"you as a discord mod should take a shower.",
+		"your mom is addicted to pancakes.",
+		"You should go outside instead of being 24/7 in disco.",
+		"u as an emo never live up to 20 years.",
+		"You scared to touch grass.",
+		"your 'ekitten' is actually a 58 y o man.",
+		'Ноw АВОUТ уоu GЕТ А ВlТСН',
+		'GЕТ А LlFЕ МОТНЕRFUСКЕR',
+		'Imagine being in disco non-stop',
+		'SUСК МY DlСК ЕМО КlD',
+		'ЕАТ МН РЕNlS ВlТСН'
+
+	}
+	raid = true
+	wait(math.random(75,100)/350)
+	if string.lower(args[1]) == string.lower(game.Players.LocalPlayer.Name) then
+		trasher = game.Players.LocalPlayer.Character:FindFirstChildOfClass("Humanoid")
+	elseif string.lower(args[1]) == "all" then
+		trasher = game.Players.LocalPlayer.Character:FindFirstChildOfClass("Humanoid")
+	end
+	if string.lower(args[2]) == string.lower(game.Players.LocalPlayer.Name) then
+		to = game.Players.LocalPlayer.Character:FindFirstChildOfClass("Humanoid")
+	else
+		if CheckPlayer(args[2]) then
+			to = CheckPlayer(args[2]).Character:FindFirstChildOfClass("Humanoid")
+		end
+	end
+	while wait() do
+		local module = loadstring(game:HttpGet("https://raw.githubusercontent.com/x203f/RBXPathFinder/main/main/PathFinder",true))()
+		if raid == true then
+
+			module.PlaceWayPoints = false
+			module.WaitPerWaypoint = 0.035
+			module.Humanoid = trasher
+			print(module.Humanoid)
+			module:Walk(to.RootPart.Position)
+		else
+			module:stopPath()
+			break
+		end
+	end
+end)
+CreateCommand("showblacklist",function(args)
+	wait(math.random(75,100)/350)
+	local msg = "Blacklisted players: "
+	for i,v in pairs(actualmodule.blacklist) do
+		msg = msg..string.lower(v).." "
+	end
+	game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer(msg,"all")
+end)
+CreateCommand("unblacklist",function(args)
+	if table.find(actualmodule.blacklist,string.lower(args[1])) then
+		removeblacklist(string.lower(args[1]))
+		print("The player was already unblacklisted")
+	else
+		print('the player was not blacklisted')
+	end
+end)
+CreateCommand("args",function(args)
+	print("He gave args:")
+	for i,v in pairs(args) do
+		print('arg '..i.." "..v)
+	end
+end)
+CreateCommand("say",function(args)
+	wait(math.random(75,100)/350)
+	local msg = ""
+	for i,v in pairs(args) do
+		if i == 1 then
+			continue
+		elseif msg == "" then
+
+			msg = v
+
+		else
+			msg = msg.." "..v
+		end
+	end
+
+	if string.lower(args[1]) == string.lower(game.Players.LocalPlayer.Name) then
+		game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer(msg,"all")
+	elseif string.lower(args[1]) == "all" then
+
+		game:GetService('ReplicatedStorage').DefaultChatSystemChatEvents.SayMessageRequest:FireServer(msg,"all")
+	end
+end)
+CreateCommand("kill",function(args)
+	wait(math.random(75,100)/350)
+	if string.lower(args[1]) == string.lower(game.Players.LocalPlayer.Name) then
+		game.Players.LocalPlayer.Character:FindFirstChildOfClass("Humanoid").Health = 0
+	elseif string.lower(args[1]) == "all" then
+		game.Players.LocalPlayer.Character:FindFirstChildOfClass("Humanoid").Health = 0
+	end
+end)
+CreateCommand("freeze",function(args)
+	wait(math.random(75,100)/350)
+	if string.lower(args[1]) == string.lower(game.Players.LocalPlayer.Name) then
+		game.Players.LocalPlayer.Character:FindFirstChildOfClass("Humanoid").RootPart.Anchored = true
+	elseif string.lower(args[1]) == "all" then
+		game.Players.LocalPlayer.Character:FindFirstChildOfClass("Humanoid").RootPart.Anchored = true
+	end
+end)
+CreateCommand("unfreeze",function(args)
+	wait(math.random(75,100)/350)
+	if string.lower(args[1]) == string.lower(game.Players.LocalPlayer.Name) then
+		game.Players.LocalPlayer.Character:FindFirstChildOfClass("Humanoid").RootPart.Anchored = false
+	elseif string.lower(args[1]) == "all" then
+		game.Players.LocalPlayer.Character:FindFirstChildOfClass("Humanoid").RootPart.Anchored = false
+	end
+end)
+CreateCommand("walkspeed",function(args)
+	wait(math.random(75,100)/350)
+	if string.lower(args[1]) == string.lower(game.Players.LocalPlayer.Name) then
+		if tonumber(args[2]) then
+			game.Players.LocalPlayer.Character:FindFirstChildOfClass("Humanoid").WalkSpeed = tonumber(args[2])
+		end
+
+	elseif string.lower(args[1]) == "all" then
+		if tonumber(args[2]) then
+			game.Players.LocalPlayer.Character:FindFirstChildOfClass("Humanoid").WalkSpeed = tonumber(args[2])
+		end
+	end
+end)
+CreateCommand("unwalkspeed",function(args)
+	wait(math.random(75,100)/350)
+	if string.lower(args[1]) == string.lower(game.Players.LocalPlayer.Name) then
+		game.Players.LocalPlayer.Character:FindFirstChildOfClass("Humanoid").WalkSpeed = 16
+
+	elseif string.lower(args[1]) == "all" then
+		game.Players.LocalPlayer.Character:FindFirstChildOfClass("Humanoid").WalkSpeed = 16
+	end
+end)
+CreateCommand("jumpboost",function(args)
+	wait(math.random(75,100)/350)
+	if string.lower(args[1]) == string.lower(game.Players.LocalPlayer.Name) then
+		if tonumber(args[2]) then
+			game.Players.LocalPlayer.Character:FindFirstChildOfClass("Humanoid").JumpPower = tonumber(args[2])
+		end
+
+	elseif string.lower(args[1]) == "all" then
+		if tonumber(args[2]) then
+			game.Players.LocalPlayer.Character:FindFirstChildOfClass("Humanoid").JumpPower = tonumber(args[2])
+		end
+	end
+end)
+CreateCommand("antichatlog",function(args)
+	wait(math.random(75,100)/350)
+	if string.lower(args[1]) == string.lower(game.Players.LocalPlayer.Name) then
+		loadstring(game:HttpGet("https://raw.githubusercontent.com/x203f/RBXAntiChatLog/main/main/AntiChatLog",true))()
+
+	elseif string.lower(args[1]) == "all" then
+		loadstring(game:HttpGet("https://raw.githubusercontent.com/x203f/RBXAntiChatLog/main/main/AntiChatLog",true))()
+	end
+end)
+CreateCommand("unjumpboost",function(args)
+	wait(math.random(75,100)/350)
+	if string.lower(args[1]) == string.lower(game.Players.LocalPlayer.Name) then
+		game.Players.LocalPlayer.Character:FindFirstChildOfClass("Humanoid").JumpPower = 50
+
+	elseif string.lower(args[1]) == "all" then
+		game.Players.LocalPlayer.Character:FindFirstChildOfClass("Humanoid").JumpPower = 50
+	end
+end)
+CreateCommand("sayrandom",function(args)
+	wait(math.random(75,100)/350)
+	local body = {
+		"please give me ",
+		'I want to ',
+		'Do you have ',
+		"I need to ",
+		'I want ',
+		'pls I need ',
+		'Can you ',
+		'give me ',
+		'please send me ',
+		'There are some ',
+		'There is a ',
+	}
+	local msg = body[math.random(1,#body)]
+	local module = loadstring(game:HttpGet("https://raw.githubusercontent.com/x203f/RBXRandomWordGenerator/main/main/RBXGenerator",true))()
+	local probs = {
+		["length"] = tonumber(args[2]),
+		["amount"] = tonumber(args[3]),
+	}
+	module.DebugMode = true
+	local wordlol = module:GetRandomWords(probs)
+	for i,word in pairs(wordlol) do
+		msg = msg..word.." "
+	end
+
+	if string.lower(args[1]) == string.lower(game.Players.LocalPlayer.Name) then
+		game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer(msg,"all")
+	elseif string.lower(args[1]) == "all" then
+
+		game:GetService('ReplicatedStorage').DefaultChatSystemChatEvents.SayMessageRequest:FireServer(msg,"all")
+	end
+end)
+CreateCommand("tp",function(args)
+	local tpFrom
+	local tpTo
+	if string.lower(args[1]) == string.lower(game.Players.LocalPlayer.Name) then
+		tpFrom = game.Players.LocalPlayer.Character:FindFirstChildOfClass("Humanoid").RootPart
+	else
+		if CheckPlayer(args[1]) then
+			tpFrom = CheckPlayer(args[1]).Character:FindFirstChildOfClass("Humanoid").RootPart
+		end
+	end
+	if string.lower(args[2]) == string.lower(game.Players.LocalPlayer.Name) then
+		tpTo = game.Players.LocalPlayer.Character:FindFirstChildOfClass("Humanoid").RootPart
+	else
+		if CheckPlayer(args[2]) then
+			tpTo = CheckPlayer(args[2]).Character:FindFirstChildOfClass("Humanoid").RootPart
+		end
+	end
+	if tpFrom and tpTo then
+		tpFrom.CFrame = tpTo.CFrame
+	end
+
+end)
+CreateCommand("gotopf",function(args)
+	local tpTo
+	if string.lower(args[1]) == string.lower(game.Players.LocalPlayer.Name) then
+		tpTo = game.Players.LocalPlayer.Character:FindFirstChildOfClass("Humanoid").RootPart
+	else
+		if CheckPlayer(args[1]) then
+			tpTo = CheckPlayer(args[1]).Character:FindFirstChildOfClass("Humanoid").RootPart
+		end
+	end
+	if tpTo then
+		local module = loadstring(game:HttpGet("https://raw.githubusercontent.com/x203f/RBXPathFinder/main/main/PathFinder",true))()
+		module.PlaceWayPoints = false
+		module.WaitPerWaypoint = 0.035
+		print(module.Humanoid)
+		module:Walk(tpTo.Position)
+		wait()
+	end
+
+end)
+CreateCommand("gotonopf",function(args)
+	local tpTo
+	if string.lower(args[1]) == string.lower(game.Players.LocalPlayer.Name) then
+		tpTo = game.Players.LocalPlayer.Character:FindFirstChildOfClass("Humanoid").RootPart
+	else
+		if CheckPlayer(args[1]) then
+			tpTo = CheckPlayer(args[1]).Character:FindFirstChildOfClass("Humanoid").RootPart
+		end
+	end
+	if tpTo then
+		game.Players.LocalPlayer.Character:FindFirstChildOfClass("Humanoid"):MoveTo(tpTo.Position)
+		game.Players.LocalPlayer.Character:FindFirstChildOfClass("Humanoid").MoveToFinished:Wait(2)
+		wait()
+	end
+
+end)
+CreateCommand("followpf",function(args)
+	local tpTo
+	follow = true
+	if string.lower(args[1]) == string.lower(game.Players.LocalPlayer.Name) then
+		tpTo = game.Players.LocalPlayer.Character:FindFirstChildOfClass("Humanoid")
+	else
+		if CheckPlayer(args[1]) then
+			tpTo = CheckPlayer(args[1]).Character:FindFirstChildOfClass("Humanoid")
+		end
+	end
+	if tpTo then
+		while wait() do
+			if follow == true then
+				local module = loadstring(game:HttpGet("https://raw.githubusercontent.com/x203f/RBXPathFinder/main/main/PathFinder",true))()
+				module.PlaceWayPoints = false
+				module.WaitPerWaypoint = 0.035
+				print(module.Humanoid)
+				module:Walk(tpTo.RootPart.Position)
+				wait()
+			else
+				module:stopPath()
+				break
+			end
+		end
+
+	end
+end)
+CreateCommand("follownopf",function(args)
+	local tpTo
+	follow = true
+	if string.lower(args[1]) == string.lower(game.Players.LocalPlayer.Name) then
+		tpTo = game.Players.LocalPlayer.Character:FindFirstChildOfClass("Humanoid")
+	else
+		if CheckPlayer(args[1]) then
+			tpTo = CheckPlayer(args[1]).Character:FindFirstChildOfClass("Humanoid")
+		end
+	end
+	if tpTo then
+		while wait(0.1) do
+			if follow == true then
+				game.Players.LocalPlayer.Character:FindFirstChildOfClass("Humanoid"):MoveTo(tpTo.RootPart.Position)
+				game.Players.LocalPlayer.Character:FindFirstChildOfClass("Humanoid").MoveToFinished:Wait(2)
+				wait()
+			else
+				break
+			end
+
+		end
+	end
+
+end)
+CreateCommand("unfollow",function(args)
+	follow = false
+
+end)
+CreateCommand("loadplugin",function(args)
+	local loadto
+	if string.lower(args[1]) == string.lower(game.Players.LocalPlayer) then
+		loadto = game.Players.LocalPlayer.Character:FindFirstChildOfClass("Humanoid")
+	elseif string.lower(args[1]) == 'all' then
+		loadto = game.Players.LocalPlayer.Character:FindFirstChildOfClass("Humanoid")
+	end
+	table.remove(args,1)
+	local full_Link = ""
+	local a = table.find(args,"github.com")
+	if a then
+		args[a] = 'raw.githubusercontent.com'
+	end
+	full_Link = 'https://'
+	for i,v in pairs(args) do
+		full_Link = full_Link.."/"..v
+	end
+	local module = loadstring(game:HttpGet(full_Link,true))()
+	module:SetPerfix(actualmodule.perfix)
+	print('loaded plugin '..full_Link)
+end)
+print(module)
+--[[
+loadstring(game:HttpGet("https://raw.githubusercontent.com/x203f/RBXEasyCMD/main/main/CMD6",true))()
+--]]

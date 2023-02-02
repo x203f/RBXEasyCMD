@@ -1,0 +1,119 @@
+local module= {}
+local follow = false
+local raid = false
+local loaded = false
+local actualmodule = {
+	perfix = '.'	,
+	blacklist = {}
+}
+module.test = function(args)
+	for i,v in pairs(args) do
+		print("Arg "..i.." "..v)
+	end
+end
+local function DoCommand(command,args)
+	for i,v in pairs(module) do
+		if string.lower(i) == string.lower(command) then
+			v(args)
+
+		end
+	end
+end
+function module:SetPerfix(perfix)
+	actualmodule.perfix = perfix
+end
+function module:OnLoad(callback)
+	while wait() do
+		if loaded == true then
+			callback()
+			break
+		end
+	end
+end
+function module:CreateCommand(commandName,callback)
+	loaded = true
+	module[commandName] = callback
+end
+local function GetFullChatCommand(msg)
+	local splittedMsg = string.split(msg)
+
+	local FinalMsg = " "
+	if string.find(splittedMsg[1],actualmodule.perfix) ~= nil then
+		FinalMsg = string.gsub(msg,actualmodule.perfix,'')
+		splittedMsg = string.split(FinalMsg," ")
+	else
+		print('not a command')
+		return false
+	end
+
+	return splittedMsg
+end
+local function GetArgs(commtbl)
+	local res = {}
+	for i,v in pairs(commtbl) do
+		if i == 1 then
+			continue
+		elseif v == "" then
+			continue
+
+		else
+			res[i-1] = v
+		end
+	end
+	return res
+end
+local function removeblacklist(name)
+
+	for i,v in pairs(actualmodule.blacklist) do
+		if v == name then
+			table.remove(actualmodule.blacklist,i)
+		end
+	end
+end
+local function CheckPlayer(Name)
+	for i,v in pairs(game.Players:GetPlayers()) do
+		if string.lower(v.Name) == string.lower(Name) then
+			return v
+		end
+	end
+	return false
+end
+for i,v in pairs(game.Players:GetPlayers()) do
+	if not table.find(actualmodule.blacklist,string.lower(v.Name)) then
+		v.Chatted:Connect(function(msg)
+			if table.find(actualmodule.blacklist,string.lower(v.Name)) then
+				return
+			else
+				local commtbl = GetFullChatCommand(msg)
+				if commtbl ~= false then
+					if commtbl[1] then
+						local args = GetArgs(commtbl)
+						DoCommand(commtbl[1],GetArgs(commtbl))
+					end
+				else
+					print('no perfix')
+				end
+
+			end
+
+		end)
+	end
+end
+
+game.Players.PlayerAdded:Connect(function(plr)
+	if not table.find(actualmodule.blacklist,string.lower(plr.Name)) then
+		plr.Chatted:Connect(function(msg)
+			if table.find(actualmodule.blacklist,string.lower(plr.Name)) then
+				print('you are blacklisted')
+				return
+			else
+				local commtbl = GetFullChatCommand(msg)
+				if commtbl[1] then
+					local args = GetArgs(commtbl)
+					DoCommand(commtbl[1],GetArgs(commtbl))
+				end
+			end
+		end)
+	end
+end)
+return module
