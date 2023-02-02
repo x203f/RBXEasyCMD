@@ -1,0 +1,7 @@
+local pluginmaker = loadstring(game:HttpGet("https://raw.githubusercontent.com/x203f/RBXEasyCMD/main/main/PluginMaker"))
+pluginmaker:CreateCommand('plugintest',function(args)
+	print("Test plugin maker lol worked")
+end)
+pluginmaker:OnLoad(function()
+	print("Loaded plugin lmaozzzzz")
+end)
