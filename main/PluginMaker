@@ -3,9 +3,10 @@ local follow = false
 local raid = false
 local loaded = false
 local actualmodule = {
-	perfix = '.'	,
+	perfix = ';'	,
 	blacklist = {}
 }
+print(actualmodule.perfix)
 module.test = function(args)
 	for i,v in pairs(args) do
 		print("Arg "..i.." "..v)
@@ -20,27 +21,37 @@ local function DoCommand(command,args)
 	end
 end
 function module:SetPerfix(perfix)
+    print(actualmodule.perfix)
+    print("Set to "..perfix)
 	actualmodule.perfix = perfix
 end
 function module:OnLoad(callback)
-	while wait() do
-		if loaded == true then
-			callback()
-			break
-		end
-	end
+    spawn(function()
+        while wait() do
+		    if loaded == true then
+			    callback()
+			    break
+		    end
+	    end
+    end)
+
 end
 function module:CreateCommand(commandName,callback)
-	loaded = true
+    spawn(function()
+        loaded = true
+    end)
+
 	module[commandName] = callback
 end
 local function GetFullChatCommand(msg)
 	local splittedMsg = string.split(msg)
 
 	local FinalMsg = " "
+	print('Message '..msg)
 	if string.find(splittedMsg[1],actualmodule.perfix) ~= nil then
 		FinalMsg = string.gsub(msg,actualmodule.perfix,'')
 		splittedMsg = string.split(FinalMsg," ")
+		print("Is a command")
 	else
 		print('not a command')
 		return false
@@ -86,7 +97,9 @@ for i,v in pairs(game.Players:GetPlayers()) do
 			else
 				local commtbl = GetFullChatCommand(msg)
 				if commtbl ~= false then
+				    print("Not false")
 					if commtbl[1] then
+					    print("Commanddddd")
 						local args = GetArgs(commtbl)
 						DoCommand(commtbl[1],GetArgs(commtbl))
 					end
@@ -109,11 +122,14 @@ game.Players.PlayerAdded:Connect(function(plr)
 			else
 				local commtbl = GetFullChatCommand(msg)
 				if commtbl[1] then
+				    print("COMMAnDDD")
 					local args = GetArgs(commtbl)
 					DoCommand(commtbl[1],GetArgs(commtbl))
 				end
 			end
 		end)
+	else
+	    print("Not blacklisted")
 	end
 end)
 return module
