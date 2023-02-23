@@ -1,7 +1,9 @@
 local pluginmaker = loadstring(game:HttpGet("https://raw.githubusercontent.com/x203f/RBXEasyCMD/main/main/PluginMaker",true))()
+local plrmodule = loadstring(game:HttpGet("https://raw.githubusercontent.com/x203f/GetPlayerModule/main/Module/main",true))()
 pluginmaker:CreateCommand('plugintest',function(args)
 	print("Test plugin maker lol worked")
 end)
+--[[
 local function CheckPlayer(Name)
 	for i,v in pairs(game.Players:GetPlayers()) do
 		if string.lower(v.Name) == string.lower(Name) then
@@ -23,21 +25,11 @@ local function CheckPlayer(Name)
 	end
 	return false
 end
+--]]
 pluginmaker:CreateCommand('testplayer',function(args)
     print("PLUGINNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNnnnnnn")
     print("HIII")
-    local plr
-    if string.lower(args[1]) == string.lower(game.Players.LocalPlayer.Name) then
-
-		plr = game.Players.LocalPlayer.Character:FindFirstChildOfClass("Humanoid")
-
-		print(plr)
-	else
-        if CheckPlayer(args[1]) then
-		    plr = CheckPlayer(args[1]).Character:FindFirstChildOfClass('Humanoid')
-		    print(plr)
-		end
-	end
+    local plr = plrmodule:CheckIfMeOrPlayer(args,1)
 	print(plr.Name)
 	print(pluginmaker.me)
 	if plr == pluginmaker.me then
