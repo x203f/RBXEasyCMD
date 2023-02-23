@@ -456,5 +456,7 @@ print("asdasdasdsgsfgdfg aads sd gdasg sagg dfadsad gafsfdsfdgsd gJKdfgfg ")
 print(module)
 --[[
 loadstring(game:HttpGet("https://raw.githubusercontent.com/x203f/RBXEasyCMD/main/main/CMD6",true))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/x203f/RBXEasyCMD/main/TestPlugin",true))()
+
 ;useplugin all github.com x203f RBXEasyCMD main TestPlugin
 --]]
