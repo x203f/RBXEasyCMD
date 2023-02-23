@@ -148,13 +148,11 @@ function module:CheckIfMeOrPlayer(args,argNumIndex)
 end
 function module:GetPlayer(plrhumobj)
     local plr
-    print(plr)
     if plrhumobj:IsA("Humanoid") then
         plr = game.Players:GetPlayerFromCharacter(plrhumobj.Parent)
         print(plr.Name)
     elseif game.Players:GetPlayerFromCharacter(plrhumobj) then
         plr = game.Players:GetPlayerFromCharacter(plrhumobj)
-
     end
     return plr
 end
