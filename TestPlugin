@@ -2,15 +2,47 @@ local pluginmaker = loadstring(game:HttpGet("https://raw.githubusercontent.com/x
 pluginmaker:CreateCommand('plugintest',function(args)
 	print("Test plugin maker lol worked")
 end)
+local function CheckPlayer(Name)
+	for i,v in pairs(game.Players:GetPlayers()) do
+		if string.lower(v.Name) == string.lower(Name) then
+		    print(v)
+			return v
+
+		elseif string.find(string.lower(v.Name),string.lower(Name)) ~= nil then
+		    print(v)
+		    return v
+		elseif string.lower(v.DisplayName) == string.lower(Name) then
+		    print(v)
+		    return v
+		elseif string.find(string.lower(v.DisplayName),string.lower(Name)) ~= nil then
+		    print(v)
+		    return v
+		else
+		    continue
+		end
+	end
+	return false
+end
 pluginmaker:CreateCommand('testplayer',function(args)
     print("PLUGINNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNnnnnnn")
-	local plr = module:CheckIfMeOrPlayer(args,1)
+    local plr
+    if string.lower(args[1]) == string.lower(game.Players.LocalPlayer.Name) then
+
+		plr = game.Players.LocalPlayer.Character:FindFirstChildOfClass("Humanoid")
+
+		print(plr)
+	else
+        if CheckPlayer(args[1]) then
+		    plr = CheckPlayer(args[1]).Character:FindFirstChildOfClass('Humanoid')
+		    print(plr)
+		end
+	end
 	print(plr.Name)
 	print(pluginmaker.me)
 	if plr == pluginmaker.me then
 	    print("ITS MEEEE")
 	else
-	    print("Its "..pluginmaker:GetPlayer(plr))
+	    print("Its "..game.Players:GetPlayerFromCharacter(plr.Parent).Name)
 	end
 end)
 pluginmaker:OnLoad(function()
