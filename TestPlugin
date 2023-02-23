@@ -3,6 +3,41 @@ local pluginmaker = loadstring(game:HttpGet("https://raw.githubusercontent.com/x
 pluginmaker:CreateCommand('plugintest',function(args)
 	print("Test plugin maker lol worked")
 end)
+--[[
+local function CheckPlayer(Name)
+	for i,v in pairs(game.Players:GetPlayers()) do
+		if string.lower(v.Name) == string.lower(Name) then
+		    print(v)
+			return v
+
+		elseif string.find(string.lower(v.Name),string.lower(Name)) ~= nil then
+		    print(v)
+		    return v
+		elseif string.lower(v.DisplayName) == string.lower(Name) then
+		    print(v)
+		    return v
+		elseif string.find(string.lower(v.DisplayName),string.lower(Name)) ~= nil then
+		    print(v)
+		    return v
+		else
+		    continue
+		end
+	end
+	return false
+end
+--]]
+pluginmaker:CreateCommand('testplayer',function(args)
+    print("PLUGINNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNnnnnnn")
+    print("HIII")
+    local plr = plrmodule:CheckIfMeOrPlayer(args,1)                                                                                                                                                      ,1)
+	print(plr)
+	print(pluginmaker.me)
+	if plr == pluginmaker.me then
+	    print("ITS MEEEE")
+	else
+	    print("Its "..game.Players:GetPlayerFromCharacter(plr.Parent).Name)
+	end
+end)
 
 pluginmaker:OnLoad(function()
 	print("Loaded plugin lmaozzzzz")
