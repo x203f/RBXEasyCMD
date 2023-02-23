@@ -1,7 +1,6 @@
 print("HI")
 local pluginmaker = loadstring(game:HttpGet("https://raw.githubusercontent.com/x203f/RBXEasyCMD/main/main/PluginMaker",true))()
-local plrmodule = loadstring(game:HttpGet("https://raw.githubusercontent.com/x203f/GetPlayerModule/main/Module/main",true))()
-print(plrmodule)
+
 pluginmaker:CreateCommand('plugintest',function(args)
 	print("Test plugin maker lol worked")
 end)
@@ -31,6 +30,8 @@ end
 pluginmaker:CreateCommand('testplayer',function(args)
     print("PLUGINNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNnnnnnn")
     print("HIII")
+    local plrmodule = loadstring(game:HttpGet("https://raw.githubusercontent.com/x203f/GetPlayerModule/main/Module/main",true))()
+    print(plrmodule)
     local plr = plrmodule:CheckIfMeOrPlayer(args,1)                                                                                                                                                      ,1)
 	print(plr)
 	print(pluginmaker.me)
