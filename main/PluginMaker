@@ -1,4 +1,6 @@
-local module= {}
+local module= {
+    me = game.Players.LocalPlayer.Character:FindFirstChildOfClass("Humanoid")
+}
 local follow = false
 local raid = false
 local loaded = false
@@ -43,6 +45,7 @@ function module:CreateCommand(commandName,callback)
 
 	module[commandName] = callback
 end
+
 local function GetFullChatCommand(msg)
 	local splittedMsg = string.split(msg)
 
@@ -85,9 +88,55 @@ local function CheckPlayer(Name)
 	for i,v in pairs(game.Players:GetPlayers()) do
 		if string.lower(v.Name) == string.lower(Name) then
 			return v
+		elseif string.find(string.lower(v.Name),string.lower(Name)) ~= nil then
+		    return v
+		elseif string.lower(v.DisplayName) == string.lower(Name) then
+		    return v
+		elseif string.find(string.lower(v.DisplayName),string.lower(Name)) ~= nil then
+		    return v
+		else
+		    continue
 		end
 	end
 	return false
+end
+function module:CheckIfMeOrAll(args,argNumIndex)
+    local plr
+    if string.lower(args[argNumIndex]) == string.lower(game.Players.LocalPlayer.Name) then
+		plr = game.Players.LocalPlayer.Character:FindFirstChildOfClass("Humanoid")
+	elseif string.lower(args[argNumIndex]) == string.lower("all") then
+		plr = game.Players.LocalPlayer.Character:FindFirstChildOfClass("Humanoid")
+	else
+	    plr = nil
+	end
+	if plr == nil then
+	    return false
+	end
+	return plr
+end
+function module:CheckIfMeOrPlayer(args,argNumIndex)
+    local plr
+    if string.lower(args[argNumIndex]) == string.lower(game.Players.LocalPlayer.Name) then
+		plr = game.Players.LocalPlayer.Character:FindFirstChildOfClass("Humanoid")
+	elseif CheckPlayer(args[argNumIndex]) then
+		plr = CheckPlayer(args[argNumIndex]).Character:FindFirstChildOfClass('Humanoid')
+	else
+	    plr = nil
+	end
+	if plr == nil then
+	    return false
+	end
+	return plr
+end
+function module:GetPlayer(plrhumobj)
+    local plr
+    if plrhumobj:IsA("Humanoid") then
+        plr = game.Players:GetPlayerFromCharacter(plrhumobj.Parent)
+        print(plr.Name)
+    elseif game.Players:GetPlayerFromCharacter(plrhumobj) then
+        plr = game.Players:GetPlayerFromCharacter(plrhumobj)
+    end
+    return plr
 end
 for i,v in pairs(game.Players:GetPlayers()) do
 	if not table.find(actualmodule.blacklist,string.lower(v.Name)) then

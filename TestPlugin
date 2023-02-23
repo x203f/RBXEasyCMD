@@ -2,6 +2,14 @@ local pluginmaker = loadstring(game:HttpGet("https://raw.githubusercontent.com/x
 pluginmaker:CreateCommand('plugintest',function(args)
 	print("Test plugin maker lol worked")
 end)
+pluginmaker:CreateCommand('TestPlayer',function(args)
+	local plr = module:CheckIfMeOrPlayer(args,1)
+	if plr == pluginmaker.me then
+	    print("ITS MEEEE")
+	else
+	    print("Its "..pluginmaker:GetPlayer(plr))
+	end
+end)
 pluginmaker:OnLoad(function()
 	print("Loaded plugin lmaozzzzz")
 end)
