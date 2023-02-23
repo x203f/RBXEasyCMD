@@ -1,5 +1,5 @@
 local pluginmaker = loadstring(game:HttpGet("https://raw.githubusercontent.com/x203f/RBXEasyCMD/main/main/PluginMaker",true))()
-local plrmodule = loadstring(game:HttpGet("https://raw.githubusercontent.com/x203f/GetPlayerModule/main/Module/main",true))()
+--local plrmodule = loadstring(game:HttpGet("https://raw.githubusercontent.com/x203f/GetPlayerModule/main/Module/main",true))()
 pluginmaker:CreateCommand('plugintest',function(args)
 	print("Test plugin maker lol worked")
 end)
@@ -25,7 +25,7 @@ local function CheckPlayer(Name)
 	end
 	return false
 end
---]]
+
 pluginmaker:CreateCommand('testplayer',function(args)
     print("PLUGINNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNnnnnnn")
     print("HIII")
@@ -38,6 +38,7 @@ pluginmaker:CreateCommand('testplayer',function(args)
 	    print("Its "..game.Players:GetPlayerFromCharacter(plr.Parent).Name)
 	end
 end)
+--]]
 pluginmaker:OnLoad(function()
 	print("Loaded plugin lmaozzzzz")
 	print(pluginmaker.me)
