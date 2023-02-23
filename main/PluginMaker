@@ -1,4 +1,4 @@
-local module= {
+local module = {
     me = game.Players.LocalPlayer.Character:FindFirstChildOfClass("Humanoid")
 }
 local follow = false
@@ -50,13 +50,13 @@ local function GetFullChatCommand(msg)
 	local splittedMsg = string.split(msg)
 
 	local FinalMsg = " "
-	print('Message '..msg)
+	--print('Message '..msg)
 	if string.find(splittedMsg[1],actualmodule.perfix) ~= nil then
 		FinalMsg = string.gsub(msg,actualmodule.perfix,'')
 		splittedMsg = string.split(FinalMsg," ")
-		print("Is a command")
+		--print("Is a command")
 	else
-		print('not a command')
+		--print('not a command')
 		return false
 	end
 
@@ -109,6 +109,7 @@ function module:CheckIfMeOrAll(args,argNumIndex)
 	else
 	    plr = nil
 	end
+	--print(plr)
 	if plr == nil then
 	    return false
 	end
@@ -146,14 +147,15 @@ for i,v in pairs(game.Players:GetPlayers()) do
 			else
 				local commtbl = GetFullChatCommand(msg)
 				if commtbl ~= false then
-				    print("Not false")
+				    --print("Not false")
 					if commtbl[1] then
-					    print("Commanddddd")
+					    --print("Commanddddd")
 						local args = GetArgs(commtbl)
 						DoCommand(commtbl[1],GetArgs(commtbl))
 					end
 				else
-					print('no perfix')
+					--print('no perfix')
+					return
 				end
 
 			end
@@ -171,7 +173,7 @@ game.Players.PlayerAdded:Connect(function(plr)
 			else
 				local commtbl = GetFullChatCommand(msg)
 				if commtbl[1] then
-				    print("COMMAnDDD")
+				    --print("COMMAnDDD")
 					local args = GetArgs(commtbl)
 					DoCommand(commtbl[1],GetArgs(commtbl))
 				end
