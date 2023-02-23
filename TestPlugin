@@ -1,33 +1,8 @@
 local pluginmaker = loadstring(game:HttpGet("https://raw.githubusercontent.com/x203f/RBXEasyCMD/main/main/PluginMaker",true))()
---local plrmodule = loadstring(game:HttpGet("https://raw.githubusercontent.com/x203f/GetPlayerModule/main/Module/main",true))()
 pluginmaker:CreateCommand('plugintest',function(args)
 	print("Test plugin maker lol worked")
 end)
---[[
-local function CheckPlayer(Name)
-	for i,v in pairs(game.Players:GetPlayers()) do
-		if string.lower(v.Name) == string.lower(Name) then
-		    print(v)
-			return v
-
-		elseif string.find(string.lower(v.Name),string.lower(Name)) ~= nil then
-		    print(v)
-		    return v
-		elseif string.lower(v.DisplayName) == string.lower(Name) then
-		    print(v)
-		    return v
-		elseif string.find(string.lower(v.DisplayName),string.lower(Name)) ~= nil then
-		    print(v)
-		    return v
-		else
-		    continue
-		end
-	end
-	return false
-end
---]]
 pluginmaker:OnLoad(function()
 	print("Loaded plugin lmaozzzzz")
 	print(pluginmaker.me)
 end)
---sadasdfsdfsfsdfsdfdfdssdfsdddddddddd
