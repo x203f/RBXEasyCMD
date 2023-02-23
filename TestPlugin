@@ -25,6 +25,7 @@ local function CheckPlayer(Name)
 end
 pluginmaker:CreateCommand('testplayer',function(args)
     print("PLUGINNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNnnnnnn")
+    print("HIII")
     local plr
     if string.lower(args[1]) == string.lower(game.Players.LocalPlayer.Name) then
 
