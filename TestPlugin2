@@ -10,7 +10,7 @@ pluginmaker:CreateCommand('testplayer',function(args)
     print("HIII")
     local plrmodule = loadstring(game:HttpGet("https://raw.githubusercontent.com/x203f/GetPlayerModule/main/Module/main",true))()
     print(plrmodule)
-    local plr = plrmodule:CheckIfMeOrPlayer(args,1)                                                                                                                                                      ,1)
+    local plr = plrmodule:CheckIfMeOrPlayer(args,1)
 	print(plr)
 	print(pluginmaker.me)
 	if plr == pluginmaker.me then
