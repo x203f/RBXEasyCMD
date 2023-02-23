@@ -87,12 +87,17 @@ end
 local function CheckPlayer(Name)
 	for i,v in pairs(game.Players:GetPlayers()) do
 		if string.lower(v.Name) == string.lower(Name) then
+		    print(v)
 			return v
+
 		elseif string.find(string.lower(v.Name),string.lower(Name)) ~= nil then
+		    print(v)
 		    return v
 		elseif string.lower(v.DisplayName) == string.lower(Name) then
+		    print(v)
 		    return v
 		elseif string.find(string.lower(v.DisplayName),string.lower(Name)) ~= nil then
+		    print(v)
 		    return v
 		else
 		    continue
@@ -104,38 +109,52 @@ function module:CheckIfMeOrAll(args,argNumIndex)
     local plr
     if string.lower(args[argNumIndex]) == string.lower(game.Players.LocalPlayer.Name) then
 		plr = game.Players.LocalPlayer.Character:FindFirstChildOfClass("Humanoid")
+		print(plr)
 	elseif string.lower(args[argNumIndex]) == string.lower("all") then
 		plr = game.Players.LocalPlayer.Character:FindFirstChildOfClass("Humanoid")
+		print(plr)
 	else
 	    plr = nil
+	    print(plr)
 	end
-	--print(plr)
+	print(plr)
 	if plr == nil then
 	    return false
 	end
+	print(plr)
 	return plr
 end
 function module:CheckIfMeOrPlayer(args,argNumIndex)
     local plr
     if string.lower(args[argNumIndex]) == string.lower(game.Players.LocalPlayer.Name) then
+
 		plr = game.Players.LocalPlayer.Character:FindFirstChildOfClass("Humanoid")
+
+		print(plr)
 	elseif CheckPlayer(args[argNumIndex]) then
+
 		plr = CheckPlayer(args[argNumIndex]).Character:FindFirstChildOfClass('Humanoid')
+		print(plr)
 	else
+	    print(plr)
 	    plr = nil
 	end
+	print(plr)
 	if plr == nil then
 	    return false
 	end
+	print(plr)
 	return plr
 end
 function module:GetPlayer(plrhumobj)
     local plr
+    print(plr)
     if plrhumobj:IsA("Humanoid") then
         plr = game.Players:GetPlayerFromCharacter(plrhumobj.Parent)
         print(plr.Name)
     elseif game.Players:GetPlayerFromCharacter(plrhumobj) then
         plr = game.Players:GetPlayerFromCharacter(plrhumobj)
+        print(plr)
     end
     return plr
 end
