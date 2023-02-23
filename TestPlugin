@@ -4,6 +4,8 @@ pluginmaker:CreateCommand('plugintest',function(args)
 end)
 pluginmaker:CreateCommand('TestPlayer',function(args)
 	local plr = module:CheckIfMeOrPlayer(args,1)
+	print(plr.Name)
+	print(pluginmaker.me)
 	if plr == pluginmaker.me then
 	    print("ITS MEEEE")
 	else
