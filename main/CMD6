@@ -24,6 +24,15 @@ local function DoCommand(command,args)
 		end
 	end
 end
+local function Swear(sen)
+    local cussWords = {"fuck", "shit", "ass",'whore','thot','drug','nigg','kill','suicide','weed'}  -- replace with your own list of cuss words
+    for _, word in ipairs(cussWords) do
+        if string.find(sen:lower(), word) then
+           return true
+        end
+    end
+    return false
+end
 local function CreateCommand(commandName,callback)
 	module[commandName] = callback
 end
@@ -177,6 +186,12 @@ CreateCommand("raidpf",function(args)
 
 	spawn(function()
 		while wait(3) do
+			local insult = game:HttpGet("https://insult.mattbas.org/api/insult",true)
+            if Swear(insult) then
+                return
+            else
+                table.insert(msgs,insult)
+            end
 			if raid == true then
 
 				if string.lower(args[1]) == string.lower(game.Players.LocalPlayer.Name) then
@@ -251,6 +266,12 @@ CreateCommand("raidnopf",function(args)
 
 	spawn(function()
 		while wait(3) do
+		    local insult = game:HttpGet("https://insult.mattbas.org/api/insult",true)
+            if Swear(insult) then
+                return
+            else
+                table.insert(msgs,insult)
+            end
 			if raid == true then
 				if string.lower(args[1]) == string.lower(game.Players.LocalPlayer.Name) then
 					local msg = msgs[math.random(1,#msgs)]
@@ -354,6 +375,12 @@ CreateCommand("raidtp",function(args)
 	end
 	spawn(function()
 		while wait(3) do
+		    local insult = game:HttpGet("https://insult.mattbas.org/api/insult",true)
+            if Swear(insult) then
+                return
+            else
+                table.insert(msgs,insult)
+            end
 			if raid == true then
 				if string.lower(args[1]) == string.lower(game.Players.LocalPlayer.Name) then
 					local msg = msgs[math.random(1,#msgs)]
