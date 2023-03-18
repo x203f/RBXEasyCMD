@@ -176,29 +176,29 @@ CreateCommand("raidpf",function(args)
 
 	spawn(function()
 		while wait(3) do
-			local insult = tostring(game:HttpGet("https://insult.mattbas.org/api/insult",true)):lower()
+				    local insult = tostring(game:HttpGet("https://insult.mattbas.org/api/insult",true)):lower()
 		    if insult:find("fuck") then
 		        print("No")
 	            insult = ""
-		    elif insult:find("shit") then
+		    elseif insult:find("shit") then
 		        print("No")
 		        insult = ""
-		    elif insult:find("ass") then
+		    elseif insult:find("ass") then
                 print("No")
 		        insult = ""
-		    elif insult:find("whore") then
+		    elseif insult:find("whore") then
 		        insult = ""
 		        print("No")
-		    elif insult:find("faggot") then
+		    elseif insult:find("faggot") then
 		        insult = ""
 		        print("No")
-		    elif insult:find("nigg") then
+		    elseif insult:find("nigg") then
 		        insult = ""
 		        print("No")
-		    elif insult:find("sex") then
+		    elseif insult:find("sex") then
 		        insult = ""
 		        print("No")
-		    elif insult:find("kill") then
+		    elseif insult:find("kill") then
 		        insult = ""
 		        print("No")
 		    else
@@ -283,25 +283,25 @@ CreateCommand("raidnopf",function(args)
 		    if insult:find("fuck") then
 		        print("No")
 	            insult = ""
-		    elif insult:find("shit") then
+		    elseif insult:find("shit") then
 		        print("No")
 		        insult = ""
-		    elif insult:find("ass") then
+		    elseif insult:find("ass") then
                 print("No")
 		        insult = ""
-		    elif insult:find("whore") then
+		    elseif insult:find("whore") then
 		        insult = ""
 		        print("No")
-		    elif insult:find("faggot") then
+		    elseif insult:find("faggot") then
 		        insult = ""
 		        print("No")
-		    elif insult:find("nigg") then
+		    elseif insult:find("nigg") then
 		        insult = ""
 		        print("No")
-		    elif insult:find("sex") then
+		    elseif insult:find("sex") then
 		        insult = ""
 		        print("No")
-		    elif insult:find("kill") then
+		    elseif insult:find("kill") then
 		        insult = ""
 		        print("No")
 		    else
@@ -414,25 +414,25 @@ CreateCommand("raidtp",function(args)
 		    if insult:find("fuck") then
 		        print("No")
 	            insult = ""
-		    elif insult:find("shit") then
+		    elseif insult:find("shit") then
 		        print("No")
 		        insult = ""
-		    elif insult:find("ass") then
+		    elseif insult:find("ass") then
                 print("No")
 		        insult = ""
-		    elif insult:find("whore") then
+		    elseif insult:find("whore") then
 		        insult = ""
 		        print("No")
-		    elif insult:find("faggot") then
+		    elseif insult:find("faggot") then
 		        insult = ""
 		        print("No")
-		    elif insult:find("nigg") then
+		    elseif insult:find("nigg") then
 		        insult = ""
 		        print("No")
-		    elif insult:find("sex") then
+		    elseif insult:find("sex") then
 		        insult = ""
 		        print("No")
-		    elif insult:find("kill") then
+		    elseif insult:find("kill") then
 		        insult = ""
 		        print("No")
 		    else
