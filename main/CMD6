@@ -650,6 +650,7 @@ CreateCommand("say",function(args)
 		end
 
 
+
 	end
 
 	if string.lower(args[1]) == string.lower(game.Players.LocalPlayer.Name) then
