@@ -176,37 +176,35 @@ CreateCommand("raidpf",function(args)
 
 	spawn(function()
 		while wait(3) do
-		            spawn(function()
-                local insult = tostring(game:HttpGet("https://insult.mattbas.org/api/insult",true)):lower()
-                if insult:find("fuck") then
-                    print("No")
-                    insult = ""
-                elif insult:find("shit") then
-                    print("No")
-                    insult = ""
-                elif insult:find("ass") then
-                    print("No")
-                    insult = ""
-                elif insult:find("whore") then
-                    insult = ""
-                    print("No")
-                elif insult:find("faggot") then
-                    insult = ""
-                    print("No")
-                elif insult:find("nigg") then
-                    insult = ""
-                    print("No")
-                elif insult:find("sex") then
-                    insult = ""
-                    print("No")
-                elif insult:find("kill") then
-                    insult = ""
-                    print("No")
-                else
-                    print("Yes")
-                    table.insert(msgs,insult)
-                end
-            end)
+			local insult = tostring(game:HttpGet("https://insult.mattbas.org/api/insult",true)):lower()
+		    if insult:find("fuck") then
+		        print("No")
+	            insult = ""
+		    elif insult:find("shit") then
+		        print("No")
+		        insult = ""
+		    elif insult:find("ass") then
+                print("No")
+		        insult = ""
+		    elif insult:find("whore") then
+		        insult = ""
+		        print("No")
+		    elif insult:find("faggot") then
+		        insult = ""
+		        print("No")
+		    elif insult:find("nigg") then
+		        insult = ""
+		        print("No")
+		    elif insult:find("sex") then
+		        insult = ""
+		        print("No")
+		    elif insult:find("kill") then
+		        insult = ""
+		        print("No")
+		    else
+		        print("Yes")
+		        table.insert(msgs,insult)
+		    end
 			if raid == true then
 
 				if string.lower(args[1]) == string.lower(game.Players.LocalPlayer.Name) then
@@ -281,37 +279,35 @@ CreateCommand("raidnopf",function(args)
 
 	spawn(function()
 		while wait(3) do
-		    spawn(function()
-                local insult = tostring(game:HttpGet("https://insult.mattbas.org/api/insult",true)):lower()
-                if insult:find("fuck") then
-                    print("No")
-                    insult = ""
-                elif insult:find("shit") then
-                    print("No")
-                    insult = ""
-                elif insult:find("ass") then
-                    print("No")
-                    insult = ""
-                elif insult:find("whore") then
-                    insult = ""
-                    print("No")
-                elif insult:find("faggot") then
-                    insult = ""
-                    print("No")
-                elif insult:find("nigg") then
-                    insult = ""
-                    print("No")
-                elif insult:find("sex") then
-                    insult = ""
-                    print("No")
-                elif insult:find("kill") then
-                    insult = ""
-                    print("No")
-                else
-                    print("Yes")
-                    table.insert(msgs,insult)
-                end
-            end)
+		    local insult = tostring(game:HttpGet("https://insult.mattbas.org/api/insult",true)):lower()
+		    if insult:find("fuck") then
+		        print("No")
+	            insult = ""
+		    elif insult:find("shit") then
+		        print("No")
+		        insult = ""
+		    elif insult:find("ass") then
+                print("No")
+		        insult = ""
+		    elif insult:find("whore") then
+		        insult = ""
+		        print("No")
+		    elif insult:find("faggot") then
+		        insult = ""
+		        print("No")
+		    elif insult:find("nigg") then
+		        insult = ""
+		        print("No")
+		    elif insult:find("sex") then
+		        insult = ""
+		        print("No")
+		    elif insult:find("kill") then
+		        insult = ""
+		        print("No")
+		    else
+		        print("Yes")
+		        table.insert(msgs,insult)
+		    end
 			if raid == true then
 				if string.lower(args[1]) == string.lower(game.Players.LocalPlayer.Name) then
 					local msg = msgs[math.random(1,#msgs)]
@@ -414,37 +410,35 @@ CreateCommand("raidtp",function(args)
 	end
 	spawn(function()
 		while wait(3) do
-            spawn(function()
-                local insult = tostring(game:HttpGet("https://insult.mattbas.org/api/insult",true)):lower()
-                if insult:find("fuck") then
-                    print("No")
-                    insult = ""
-                elif insult:find("shit") then
-                    print("No")
-                    insult = ""
-                elif insult:find("ass") then
-                    print("No")
-                    insult = ""
-                elif insult:find("whore") then
-                    insult = ""
-                    print("No")
-                elif insult:find("faggot") then
-                    insult = ""
-                    print("No")
-                elif insult:find("nigg") then
-                    insult = ""
-                    print("No")
-                elif insult:find("sex") then
-                    insult = ""
-                    print("No")
-                elif insult:find("kill") then
-                    insult = ""
-                    print("No")
-                else
-                    print("Yes")
-                    table.insert(msgs,insult)
-                end
-            end)
+		    local insult = tostring(game:HttpGet("https://insult.mattbas.org/api/insult",true)):lower()
+		    if insult:find("fuck") then
+		        print("No")
+	            insult = ""
+		    elif insult:find("shit") then
+		        print("No")
+		        insult = ""
+		    elif insult:find("ass") then
+                print("No")
+		        insult = ""
+		    elif insult:find("whore") then
+		        insult = ""
+		        print("No")
+		    elif insult:find("faggot") then
+		        insult = ""
+		        print("No")
+		    elif insult:find("nigg") then
+		        insult = ""
+		        print("No")
+		    elif insult:find("sex") then
+		        insult = ""
+		        print("No")
+		    elif insult:find("kill") then
+		        insult = ""
+		        print("No")
+		    else
+		        print("Yes")
+		        table.insert(msgs,insult)
+		    end
 
 			if raid == true then
 				if string.lower(args[1]) == string.lower(game.Players.LocalPlayer.Name) then
