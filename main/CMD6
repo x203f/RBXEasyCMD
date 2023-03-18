@@ -2,6 +2,7 @@ print("AGAGAGAGA")
 local module= {}
 local follow = false
 local raid = false
+print("ASJDASDSF")
 
 local rickroll = false
 local looptp = false
