@@ -505,7 +505,7 @@ CreateCommand("looptp",function(args)
 	end
 	local plr = game.Players:GetPlayerFromCharacter(to.Parent)
 	if to and from then
-		game:GetService("RunService").HeartBeat:Connect(function()
+		game:GetService("RunService").Heartbeat:Connect(function()
 			if looptp == true then
 				pcall(function()
 					if from == game.Players.LocalPlayer.Character:FindFirstChildOfClass("Humanoid") then
