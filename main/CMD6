@@ -27,10 +27,10 @@ local function DoCommand(command,args)
 	end
 end
 local function Swear(sen)
-    local cussWords = {"fuck", "shit", "ass",'whore','thot','drug','nigg','kill','suicide','weed'}  -- replace with your own list of cuss words
-    for _, word in ipairs(cussWords) do
-        if string.find(sen:lower(), word) then
-           return true
+    local cussWords = {"fuck", "shit", "ass",'whore','thot','drug','nigg','kill','suicide','weed'}
+    for _, word in pairs(cussWords) do
+        if string.find(string.lower(sen), word) then
+            return true
         end
     end
     return false
@@ -269,7 +269,7 @@ CreateCommand("raidnopf",function(args)
 	spawn(function()
 		while wait(3) do
 		    local insult = game:HttpGet("https://insult.mattbas.org/api/insult",true)
-            if Swear(insult) then
+            if Swear(insult) == true then
                 return
             else
                 table.insert(msgs,insult)
@@ -506,7 +506,7 @@ CreateCommand("looptp",function(args)
 	end
 	local plr = game.Players:GetPlayerFromCharacter(to.Parent)
 	if to and from then
-		while wait() do
+		game:GetService("RunService").HeartBeat:Connect(function()
 			if looptp == true then
 				pcall(function()
 					if from == game.Players.LocalPlayer.Character:FindFirstChildOfClass("Humanoid") then
@@ -537,7 +537,7 @@ CreateCommand("looptp",function(args)
 			else
 				break
 			end
-		end
+		end)
 	end
 end)
 CreateCommand("unraid",function(args)
