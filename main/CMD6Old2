@@ -1,7 +1,6 @@
 local module= {}
 local follow = false
 local raid = false
-print("AGAGAGAGA")
 local rickroll = false
 local looptp = false
 local actualmodule = {
@@ -121,24 +120,21 @@ CreateCommand("raidpf",function(args)
 	local trasher
 	local to
 	local msgs = {
-	    "If I wanted to oof myself, I would simply jump from your ego to your IQ.",
-	    "If genius skips a generation, your children will be brilliant.",
-	    "Whatever doesn’t oof you, disappoints me",
-	    "If I looked like you, I would probably sue myself.",
-	    "You're so ugly that even a doctor cant fix your face.",
-	    "You probably need a plastic surgery because of amount of ugliness you have.",
-	    "You are so fat that McDonalds called burger kind as a backup.",
-	    "You are so fat you cant even fix in any doors.",
-	    "You are as fat as an average disco mod.",
-	    "You are so scared to touch grass and take a shower because you are a disco mod.",
-	    "Your mother made a huge mistake on creating you.",
-	    'You are too scared of grass.',
-	    'You dont even know whats "Outside". ',
-	    "Your IQ equals to an average stone IQ.",
-	    "My eyes are suffering of the amount of ugliness you got.",
-	    "If you were attacked by someone, I would help the attacker.",
-	    "If you ever wanted to oof, I would help you out.",
-	    "Your dad left you with the milk since you were born",
+		"you as a discord mod should take a shower.",
+		"your mom is addicted to pancakes.",
+		"You should go outside instead of being 24/7 in disco.",
+		"u as an emo never live up to 20 years.",
+		"You scared to touch grass.",
+		"your 'ekitten' is actually a 58 y o man.",
+		'Ноw АВОUТ уоu GЕТ А ВlТСН',
+		'GЕТ А LlFЕ МОТНЕRFUСКЕR',
+		'Imagine being in disco non-stop',
+		'SUСК МY DlСК ЕМО КlD',
+		'ЕАТ МY РЕNlS ВlТСН',
+		"YОU АRЕ А СНЕАР ВlТСН",
+		"Roses are red, violets are blue, Its time for the disco mods to take a dam shower.",
+		"You are fatter than nickocado avocado.",
+		'You should change your eating habits because you are fat',
 
 	}
 
@@ -198,24 +194,21 @@ CreateCommand("raidnopf",function(args)
 	local trasher
 	local to
 	local msgs = {
-	    "If I wanted to oof myself, I would simply jump from your ego to your IQ.",
-	    "If genius skips a generation, your children will be brilliant.",
-	    "Whatever doesn’t oof you, disappoints me",
-	    "If I looked like you, I would probably sue myself.",
-	    "You're so ugly that even a doctor cant fix your face.",
-	    "You probably need a plastic surgery because of amount of ugliness you have.",
-	    "You are so fat that McDonalds called burger kind as a backup.",
-	    "You are so fat you cant even fix in any doors.",
-	    "You are as fat as an average disco mod.",
-	    "You are so scared to touch grass and take a shower because you are a disco mod.",
-	    "Your mother made a huge mistake on creating you.",
-	    'You are too scared of grass.',
-	    'You dont even know whats "Outside". ',
-	    "Your IQ equals to an average stone IQ.",
-	    "My eyes are suffering of the amount of ugliness you got.",
-	    "If you were attacked by someone, I would help the attacker.",
-	    "If you ever wanted to oof, I would help you out.",
-	    "Your dad left you with the milk since you were born",
+		"you as a discord mod should take a shower.",
+		"your mom is addicted to pancakes.",
+		"You should go outside instead of being 24/7 in disco.",
+		"u as an emo never live up to 20 years.",
+		"You scared to touch grass.",
+		"your 'ekitten' is actually a 58 y o man.",
+		'Ноw АВОUТ уоu GЕТ А ВlТСН',
+		'GЕТ А LlFЕ МОТНЕRFUСКЕR',
+		'Imagine being in disco non-stop',
+		'SUСК МY DlСК ЕМО КlD',
+		'ЕАТ МY РЕNlS ВlТСН',
+		"YОU АRЕ А СНЕАР ВlТСН",
+		"Roses are red, violets are blue, Its time for the disco mods to take a dam shower.",
+		"You are fatter than nickocado avocado.",
+		'You should change your eating habits because you are fat af',
 
 	}
 
@@ -280,24 +273,21 @@ CreateCommand("raidtp",function(args)
 	local to
 	local trasher
 	local msgs = {
-	    "If I wanted to oof myself, I would simply jump from your ego to your IQ.",
-	    "If genius skips a generation, your children will be brilliant.",
-	    "Whatever doesn’t oof you, disappoints me",
-	    "If I looked like you, I would probably sue myself.",
-	    "You're so ugly that even a doctor cant fix your face.",
-	    "You probably need a plastic surgery because of amount of ugliness you have.",
-	    "You are so fat that McDonalds called burger kind as a backup.",
-	    "You are so fat you cant even fix in any doors.",
-	    "You are as fat as an average disco mod.",
-	    "You are so scared to touch grass and take a shower because you are a disco mod.",
-	    "Your mother made a huge mistake on creating you.",
-	    'You are too scared of grass.',
-	    'You dont even know whats "Outside". ',
-	    "Your IQ equals to an average stone IQ.",
-	    "My eyes are suffering of the amount of ugliness you got.",
-	    "If you were attacked by someone, I would help the attacker.",
-	    "If you ever wanted to oof, I would help you out.",
-	    "Your dad left you with the milk since you were born",
+		"you as a discщ mod should take a shower.",
+		"your mom is addicted to pancakes.",
+		"You should go outside instead of being 24/7 in disco.",
+		"u as an emo never live up to 20 years.",
+		"You scared to touch grass.",
+		"your 'ekitten' is actually a 58 y o man.",
+		'Ноw АВОUТ уоu GЕТ А ВlТСН',
+		'GЕТ А LlFЕ МОТНЕRFUСКЕR',
+		'Imagine being in disco non-stop',
+		'SUСК МY DlСК ЕМО КlD',
+		'ЕАТ МY РЕNlS ВlТСН',
+		"YОU АRЕ А СНЕАР ВlТСН",
+		"Roses are red, violets are blue, Its time for the disco mods to take a dam shower.",
+		"You are fatter than nickocado avocado.",
+		'You should change your eating habits because you are fat af',
 
 	}
 	raid = true
@@ -316,8 +306,7 @@ CreateCommand("raidtp",function(args)
 	local plr = game.Players:GetPlayerFromCharacter(to.Parent)
 	if to and trasher then
 		spawn(function()
-			local RunService = game:GetService("RunService")
-		    RunService.Heartbeat:Connect(function(step)
+			while wait() do
 				if raid == true then
 					pcall(function()
 						if trasher == game.Players.LocalPlayer.Character:FindFirstChildOfClass("Humanoid") then
@@ -348,7 +337,7 @@ CreateCommand("raidtp",function(args)
 				else
 					break
 				end
-			end)
+			end
 		end)
 
 	end
@@ -415,8 +404,7 @@ CreateCommand("rickroll",function(args)
 	end)
 	if to and from then
 
-        local RunService = game:GetService("RunService")
-		RunService.Heartbeat:Connect(function(step)
+		while wait() do
 			if rickroll == true then
 				pcall(function()
 					if from == game.Players.LocalPlayer.Character:FindFirstChildOfClass("Humanoid") then
@@ -447,7 +435,7 @@ CreateCommand("rickroll",function(args)
 			else
 				break
 			end
-		end)
+		end
 	end
 
 end)
