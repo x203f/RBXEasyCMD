@@ -899,7 +899,7 @@ CreateCommand("useplugin",function(args)
 
 end)
 print(module)
-print("Jhfjajdsjdjjfsddjfsdjfdsfjk")
+print("dfgdfgdfgdfgdfgdfgdfgdfg")
 --[[
 loadstring(game:HttpGet("https://raw.githubusercontent.com/x203f/RBXEasyCMD/main/main/CMD6",true))()
 loadstring(game:HttpGet("https://raw.githubusercontent.com/x203f/RBXEasyCMD/main/TestPlugin",true))()
