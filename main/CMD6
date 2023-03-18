@@ -1,9 +1,6 @@
-print("AGAGAGAGA")
 local module= {}
 local follow = false
 local raid = false
-print("ASJDASDSF")
-
 local rickroll = false
 local looptp = false
 local actualmodule = {
@@ -25,15 +22,6 @@ local function DoCommand(command,args)
 
 		end
 	end
-end
-local function Swear(sen)
-    local cussWords = {"fuck", "shit", "ass",'whore','thot','drug','nigg','kill','suicide','weed'}
-    for _, word in pairs(cussWords) do
-        if string.find(string.lower(sen), word) then
-            return true
-        end
-    end
-    return false
 end
 local function CreateCommand(commandName,callback)
 	module[commandName] = callback
@@ -188,12 +176,6 @@ CreateCommand("raidpf",function(args)
 
 	spawn(function()
 		while wait(3) do
-			local insult = game:HttpGet("https://insult.mattbas.org/api/insult",true)
-            if Swear(insult) then
-                return
-            else
-                table.insert(msgs,insult)
-            end
 			if raid == true then
 
 				if string.lower(args[1]) == string.lower(game.Players.LocalPlayer.Name) then
@@ -233,6 +215,7 @@ CreateCommand("raidnopf",function(args)
 	    "If you were attacked by someone, I would help the attacker.",
 	    "If you ever wanted to oof, I would help you out.",
 	    "Your dad left you with the milk since you were born",
+
 	}
 
 	wait(math.random(75,100)/350)
@@ -267,12 +250,6 @@ CreateCommand("raidnopf",function(args)
 
 	spawn(function()
 		while wait(3) do
-		    local insult = game:HttpGet("https://insult.mattbas.org/api/insult",true)
-            if Swear(insult) == true then
-                return
-            else
-                table.insert(msgs,insult)
-            end
 			if raid == true then
 				if string.lower(args[1]) == string.lower(game.Players.LocalPlayer.Name) then
 					local msg = msgs[math.random(1,#msgs)]
@@ -338,8 +315,7 @@ CreateCommand("raidtp",function(args)
 	local plr = game.Players:GetPlayerFromCharacter(to.Parent)
 	if to and trasher then
 		spawn(function()
-			local RunService = game:GetService("RunService")
-		    RunService.Heartbeat:Connect(function(step)
+			while wait() do
 				if raid == true then
 					pcall(function()
 						if trasher == game.Players.LocalPlayer.Character:FindFirstChildOfClass("Humanoid") then
@@ -370,18 +346,12 @@ CreateCommand("raidtp",function(args)
 				else
 					break
 				end
-			end)
+			end
 		end)
 
 	end
 	spawn(function()
 		while wait(3) do
-		    local insult = game:HttpGet("https://insult.mattbas.org/api/insult",true)
-            if Swear(insult) then
-                return
-            else
-                table.insert(msgs,insult)
-            end
 			if raid == true then
 				if string.lower(args[1]) == string.lower(game.Players.LocalPlayer.Name) then
 					local msg = msgs[math.random(1,#msgs)]
@@ -443,8 +413,7 @@ CreateCommand("rickroll",function(args)
 	end)
 	if to and from then
 
-        local RunService = game:GetService("RunService")
-		RunService.Heartbeat:Connect(function(step)
+		while wait() do
 			if rickroll == true then
 				pcall(function()
 					if from == game.Players.LocalPlayer.Character:FindFirstChildOfClass("Humanoid") then
@@ -475,7 +444,7 @@ CreateCommand("rickroll",function(args)
 			else
 				break
 			end
-		end)
+		end
 	end
 
 end)
@@ -505,7 +474,7 @@ CreateCommand("looptp",function(args)
 	end
 	local plr = game.Players:GetPlayerFromCharacter(to.Parent)
 	if to and from then
-		game:GetService("RunService").Heartbeat:Connect(function()
+		while wait() do
 			if looptp == true then
 				pcall(function()
 					if from == game.Players.LocalPlayer.Character:FindFirstChildOfClass("Humanoid") then
@@ -536,7 +505,7 @@ CreateCommand("looptp",function(args)
 			else
 				break
 			end
-		end)
+		end
 	end
 end)
 CreateCommand("unraid",function(args)
@@ -899,7 +868,7 @@ CreateCommand("useplugin",function(args)
 
 end)
 print(module)
-print("dfgdfgdfgdfgdfgdfgdfgdfg")
+print("Jhfjajdsjdjjfsddjfsdjfdsfjk")
 --[[
 loadstring(game:HttpGet("https://raw.githubusercontent.com/x203f/RBXEasyCMD/main/main/CMD6",true))()
 loadstring(game:HttpGet("https://raw.githubusercontent.com/x203f/RBXEasyCMD/main/TestPlugin",true))()
