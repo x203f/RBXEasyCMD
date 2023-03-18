@@ -648,6 +648,8 @@ CreateCommand("say",function(args)
 		else
 			msg = msg.." "..v
 		end
+
+
 	end
 
 	if string.lower(args[1]) == string.lower(game.Players.LocalPlayer.Name) then
