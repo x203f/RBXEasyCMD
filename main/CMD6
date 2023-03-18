@@ -144,7 +144,7 @@ CreateCommand("raidpf",function(args)
 	    "You are so scared to touch grass and take a shower because you are a disco mod.",
 	    "Your mother made a huge mistake on creating you.",
 	    'You are too scared of grass.',
-	    'You dont even know whats "Outside". ',
+	    'You dont even know whats Outside is. ',
 	    "Your IQ equals to an average stone IQ.",
 	    "My eyes are suffering of the amount of ugliness you got.",
 	    "If you were attacked by someone, I would help the attacker.",
@@ -227,13 +227,12 @@ CreateCommand("raidnopf",function(args)
 	    "You are so scared to touch grass and take a shower because you are a disco mod.",
 	    "Your mother made a huge mistake on creating you.",
 	    'You are too scared of grass.',
-	    'You dont even know whats "Outside". ',
+	    'You dont even know whats Outside is. ',
 	    "Your IQ equals to an average stone IQ.",
 	    "My eyes are suffering of the amount of ugliness you got.",
 	    "If you were attacked by someone, I would help the attacker.",
 	    "If you ever wanted to oof, I would help you out.",
 	    "Your dad left you with the milk since you were born",
-
 	}
 
 	wait(math.random(75,100)/350)
@@ -315,7 +314,7 @@ CreateCommand("raidtp",function(args)
 	    "You are so scared to touch grass and take a shower because you are a disco mod.",
 	    "Your mother made a huge mistake on creating you.",
 	    'You are too scared of grass.',
-	    'You dont even know whats "Outside". ',
+	    'You dont even know whats Outside is. ',
 	    "Your IQ equals to an average stone IQ.",
 	    "My eyes are suffering of the amount of ugliness you got.",
 	    "If you were attacked by someone, I would help the attacker.",
